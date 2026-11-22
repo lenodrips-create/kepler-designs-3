@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 
+import { Brands } from '@/components/brands'
 import { DirectionDrum } from '@/components/direction-drum'
 import { Hero } from '@/components/hero'
 import { Practice } from '@/components/practice'
@@ -24,6 +25,7 @@ export default function App() {
         {/* slides up over the end of the drum, like the page over the hero */}
         <div className="relative z-10 -mt-[35vh] bg-background">
           <Practice />
+          <Brands />
           <Services />
         </div>
 

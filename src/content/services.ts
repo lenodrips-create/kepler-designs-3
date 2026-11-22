@@ -17,7 +17,7 @@ export type Package = {
 export const packages: Package[] = [
   {
     name: 'Landing page',
-    from: 900,
+    from: 250,
     timeline: '2–3 weeks',
     summary: 'One focused page that explains what you do and gets people to act.',
     includes: [
@@ -30,7 +30,7 @@ export const packages: Package[] = [
   },
   {
     name: 'Website',
-    from: 2500,
+    from: 500,
     timeline: '5–8 weeks',
     summary: 'A multi-page site for a company that has outgrown its template.',
     includes: [
@@ -44,7 +44,7 @@ export const packages: Package[] = [
   },
   {
     name: 'Web app',
-    from: 6000,
+    from: 1000,
     timeline: '8–14 weeks',
     summary: 'Product design and front-end engineering for a working application.',
     includes: [
