@@ -1,99 +1,13 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>kepler designs</title>
-  <meta name="theme-color" content="#000000">
-
-  <!-- Stand-in for Saans until licensed Saans files are added to /fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <section class="hero" id="hero">
-    <div class="hero__media">
-      <img src="assets/hero.jpg" alt="" width="2000" height="1333" fetchpriority="high">
-    </div>
-
-    <svg class="hero__wordmark" id="wordmark" role="img" aria-label="kepler designs"
-         xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
-      <text id="wordmark-text">kepler designs</text>
-    </svg>
-
-    <div class="hero__shade" id="shade" aria-hidden="true"></div>
-  </section>
-
-  <main class="space" aria-label="Content"></main>
-
-  <script>
-    (() => {
-      const hero = document.getElementById('hero');
-      const img = hero.querySelector('.hero__media img');
-      const shade = document.getElementById('shade');
-      const svg = document.getElementById('wordmark');
-      const text = document.getElementById('wordmark-text');
-
-      const WORD = 'kepler designs';
-      const SIZE = 1000;              // measuring font size (px)
-      const TRACKING = -0.045;        // letter-spacing in em, tight like the reference wordmark
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      /* Fit the wordmark edge to edge using the glyphs' real ink bounds,
-         so the descenders of "p" and "g" sit right on the bottom margin. */
-      function fitWordmark() {
-        const family = getComputedStyle(text).fontFamily;
-        const ctx = document.createElement('canvas').getContext('2d');
-        ctx.font = `400 ${SIZE}px ${family}`;
-        const m = ctx.measureText(WORD);
-        const ls = TRACKING * SIZE;
-        const left = m.actualBoundingBoxLeft;
-        const width = left + m.actualBoundingBoxRight + ls * (WORD.length - 1);
-        const asc = m.actualBoundingBoxAscent;
-        const desc = m.actualBoundingBoxDescent;
-
-        text.setAttribute('x', left.toFixed(2));
-        text.setAttribute('y', asc.toFixed(2));
-        text.setAttribute('font-size', SIZE);
-        text.setAttribute('letter-spacing', ls.toFixed(2));
-        svg.setAttribute('viewBox', `0 0 ${width.toFixed(2)} ${(asc + desc).toFixed(2)}`);
-        svg.classList.add('is-ready');
-      }
-
-      /* Scroll: the hero sinks at 15% of scroll speed while the photo drifts
-         and a black shade fades in, so the letters recede in depth as the
-         white section slides over them. */
-      let ticking = false;
-      function update() {
-        ticking = false;
-        const h = hero.offsetHeight;
-        const p = Math.min(1, Math.max(0, window.scrollY / h));
-        shade.style.opacity = (p * 0.8).toFixed(4);
-        if (reduce) return;
-        hero.style.transform = `translate3d(0, ${(p * h * 0.15).toFixed(2)}px, 0)`;
-        img.style.transform = `translate3d(0, ${(-7 + p * 8).toFixed(3)}%, 0)`;
-      }
-      function requestUpdate() {
-        if (!ticking) { ticking = true; requestAnimationFrame(update); }
-      }
-
-      window.addEventListener('scroll', requestUpdate, { passive: true });
-      window.addEventListener('resize', requestUpdate);
-      update();
-
-      const fontsReady = document.fonts
-        ? Promise.all([
-            document.fonts.load(`400 ${SIZE}px "Saans"`),
-            document.fonts.load(`400 ${SIZE}px "Inter Tight"`)
-          ]).catch(() => {}).then(() => document.fonts.ready)
-        : Promise.resolve();
-      Promise.race([fontsReady, new Promise(r => setTimeout(r, 2500))]).then(fitWordmark);
-      if (document.fonts) document.fonts.addEventListener('loadingdone', fitWordmark);
-    })();
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+    <title>kepler designs</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
