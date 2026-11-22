@@ -18,8 +18,8 @@ export default function App() {
       <main className="relative z-10 bg-background pt-6 md:pt-10">
         <DirectionDrum />
 
-        <section aria-label="Gallery" className="w-full">
-          <div className="relative flex h-[50vh] items-center justify-center">
+        <section aria-label="Gallery" className="relative w-full md:-mt-[18vh]">
+          <div className="relative flex h-0 items-center justify-center">
             {/* Radial spotlight */}
             <div
               aria-hidden="true"
@@ -31,7 +31,7 @@ export default function App() {
             />
           </div>
           <ZoomParallax images={parallaxImages} />
-          <div className="h-[50vh]" />
+          <div className="h-[8vh]" />
         </section>
       </main>
     </>

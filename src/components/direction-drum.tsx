@@ -4,7 +4,7 @@ import { directions } from '@/content/directions'
 import { createDrum } from '@/lib/drum'
 
 const STEP_VH = 24 // scroll per entry, in viewport heights
-const DEAL_VH = 25 // short hold on the last entry before the page moves on
+const DEAL_VH = 8 // brief hold on the last entry before the page moves on
 const ANGLE = 18 // degrees between rows on the drum
 
 const pad = (n: number) => String(n).padStart(2, '0')
