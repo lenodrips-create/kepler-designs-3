@@ -10,21 +10,10 @@ export function Brands() {
       >
         Brands that trust us
       </h2>
-      <InfiniteSlider
-        gap={64}
-        duration={30}
-        durationOnHover={60}
-        className="mt-10 border-y border-foreground/10 py-8 [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] md:mt-14 md:py-10"
-      >
+      {/* full-bleed white band, edge to edge, as in the component demo */}
+      <InfiniteSlider gap={24} reverse className="mt-10 h-full w-full bg-white md:mt-14">
         {brands.map((b) => (
-          <img
-            key={b.src}
-            src={b.src}
-            alt={b.alt}
-            loading="lazy"
-            decoding="async"
-            className="h-10 w-auto opacity-70 grayscale transition-[filter,opacity] duration-300 hover:opacity-100 hover:grayscale-0 md:h-14"
-          />
+          <img key={b.src} src={b.src} alt={b.alt} className="h-20 w-auto md:h-[120px]" />
         ))}
       </InfiniteSlider>
     </section>
