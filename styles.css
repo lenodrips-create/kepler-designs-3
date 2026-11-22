@@ -1,0 +1,91 @@
+/* Saans (Displaay Type Foundry) is a commercial font. Once you have a
+   license, put Saans-Regular.woff2 in /fonts and add
+   , url("fonts/Saans-Regular.woff2") format("woff2")
+   after local("Saans Regular") below. Until then Inter Tight is used. */
+@font-face {
+  font-family: "Saans";
+  src: local("Saans"), local("Saans Regular");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font: "Saans", "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ease-out: cubic-bezier(.23, 1, .32, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: #fff;
+  color: #000;
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  z-index: 0;
+  height: 100svh;
+  min-height: 36rem;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  will-change: transform;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero__media img {
+  display: block;
+  width: 100%;
+  height: 114%;
+  object-fit: cover;
+  object-position: 60% 50%;
+  will-change: transform;
+  transform: translate3d(0, -7%, 0);
+}
+
+.hero__wordmark {
+  position: absolute;
+  left: .625rem;
+  right: .5625rem;
+  bottom: .75rem;
+  width: calc(100% - 1.1875rem);
+  height: auto;
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .9s cubic-bezier(.45, 0, .55, 1);
+}
+.hero__wordmark.is-ready { opacity: 1; }
+.hero__wordmark text {
+  fill: #fff;
+  font-family: var(--font);
+  font-weight: 400;
+}
+
+.hero__shade {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- White space ---------- */
+.space {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  min-height: 200vh;
+}
