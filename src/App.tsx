@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 
 import { DirectionDrum } from '@/components/direction-drum'
 import { Hero } from '@/components/hero'
+import { ReelFinale } from '@/components/reel-finale'
 import { ZoomParallax } from '@/components/ui/zoom-parallax'
 import { parallaxImages } from '@/content/parallax-images'
 import { startSmoothScroll } from '@/lib/smooth-scroll'
@@ -30,8 +31,12 @@ export default function App() {
               )}
             />
           </div>
-          <ZoomParallax images={parallaxImages} />
-          <div className="h-[8vh]" />
+          {/* zooms into the film, holds it full-screen, and closes the page on it */}
+          <ZoomParallax
+            images={parallaxImages}
+            hold={90}
+            finale={(progress) => <ReelFinale progress={progress} />}
+          />
         </section>
       </main>
     </>

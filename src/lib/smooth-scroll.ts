@@ -30,6 +30,12 @@ export function currentScroll(): number {
   return lenis ? lenis.scroll : window.scrollY
 }
 
+/** Glide back to the top of the page (instant for reduced motion). */
+export function scrollToTop(): void {
+  if (lenis) lenis.scrollTo(0, { duration: 2.4, easing: (t) => 1 - Math.pow(1 - t, 4) })
+  else window.scrollTo({ top: 0, behavior: 'auto' })
+}
+
 /** Subscribe to the page scroll. Called once right away, then every frame the page moves. */
 export function onScroll(listener: Listener): () => void {
   listeners.add(listener)

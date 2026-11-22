@@ -1,9 +1,16 @@
-/* Images for the zoom parallax (max 7). The first one ends up filling the
-   screen. Swap these for your own: drop files in src/assets and import them. */
+import reelPoster from '@/assets/reel-poster.jpg'
+import reelVideo from '@/assets/reel.mp4'
+import reelWebm from '@/assets/reel.webm'
+
+/* Tiles for the zoom parallax (max 7). The first one ends up filling the
+   screen, so it holds the film: the gallery zooms straight into it. Swap the
+   others for your own: drop files in src/assets and import them. */
 export const parallaxImages = [
   {
-    src: 'https://cdn.21st.dev/assets/mirror/de/de2a384dfac96d1a31a641ba6667c56747b8138ba0f4e633dbea0e7051311479.jpg',
-    alt: 'Modern architecture building',
+    src: reelPoster,
+    video: reelVideo,
+    videoWebm: reelWebm,
+    alt: 'Night drive, lit through the car windows',
   },
   {
     src: 'https://cdn.21st.dev/assets/mirror/bb/bbc200e370140ed6d4bc9dfd7b9de0957419ee0facd61f8698ed0e14281b13f5.jpg',
