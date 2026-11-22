@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@fontsource-variable/inter-tight";
+@import "@fontsource-variable/google-sans-flex/rond.css";
 @import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -19,8 +20,8 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: #f7f3ec;                /* warm cream */
+  --foreground: #1a0e08;                /* warm ink */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -41,11 +42,12 @@
   /* kepler designs, sampled from the hero photo */
   --brand: #8e6944;                     /* caramel bronze, the lit edge of the figures */
   --glow: #e5be80;                      /* honey amber, the wall */
-  --drum-idle: oklch(0.8 0.018 75);     /* warm stone grey for off-centre rows */
+  --drum-idle: color-mix(in srgb, var(--foreground) 36%, var(--background));
 }
 
 @theme inline {
   --font-sans: "Saans", "Inter Tight Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Google Sans Flex Variable", "Inter Tight Variable", system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -83,5 +85,74 @@
   html,
   body {
     @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* ---------- Word drum ----------
+   --row is the row font size; --band is half the height of the centre slot.
+   The grey drum fades out toward the top and bottom and has the centre band
+   cut out; the bronze copy shows only inside the band. Both masks are static,
+   so turning the drum never repaints them. */
+@layer components {
+  .drum-stage {
+    --row: clamp(2.4rem, 9.6vw, 8.6rem);
+    --band: calc(var(--row) * 0.6);
+  }
+
+  /* Must be the direct parent of the turning drum. */
+  .drum-persp {
+    position: absolute;
+    inset: 0;
+    perspective: clamp(700px, 94vw, 1500px);
+    perspective-origin: 50% 50%;
+  }
+
+  .drum {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  .drum-row {
+    position: absolute;
+    left: 50%;
+    width: max-content;
+    top: 50%;
+    height: 1.1em;
+    margin-top: -0.55em;
+    font-family: var(--font-display);
+    font-size: var(--row);
+    font-weight: 650;
+    font-variation-settings: "ROND" 100;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-align: center;
+    white-space: nowrap;
+    backface-visibility: hidden;
+  }
+
+  /* Each row holds its title twice: grey ink, and a bronze copy on its own
+     GPU layer on top. When a row reaches the centre the bronze fades in.
+     Only opacity changes, so no text is redrawn, and the bronze layer isn't
+     drawn at all while it's transparent. */
+  .drum-ink {
+    display: block;
+    color: var(--drum-idle);
+  }
+  .drum-lit {
+    position: absolute;
+    inset: 0;
+    display: block;
+    color: var(--brand);
+    opacity: 0;
+    will-change: opacity;
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .drum-row[data-active="true"] .drum-lit {
+    opacity: 1;
   }
 }
