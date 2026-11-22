@@ -232,14 +232,19 @@
 }
 
 @layer components {
+  /* Neumorphic snow: a groove pressed into a pale blue surface. Only the
+     stretch just behind the ball shows; the rest is covered by the surface
+     colour, which fades out behind the ball as it rolls. */
   .pl {
+    --pl-hue: 223;
+    --pl-bg: hsl(var(--pl-hue) 90% 95%);
+    --pl-dark: hsl(var(--pl-hue) 25% 35%);
+    --pl-light: hsl(0 0% 100%);
     --pl-dur: 2s;
-    --pl-track: color-mix(in srgb, var(--foreground) 7%, var(--background));
-    --pl-snow: #fff;
     position: relative;
     width: 16em;
     height: 16em;
-    font-size: clamp(10px, 2.4vmin, 15px);
+    font-size: clamp(12px, 4.8vmin, 36px);
   }
   .pl__outer-ring,
   .pl__inner-ring,
@@ -251,79 +256,94 @@
   .pl__ball-side-shadows {
     position: absolute;
   }
-  /* the groove the ball runs in: an outer disc with a raised inner disc */
+  .pl__outer-ring,
+  .pl__inner-ring,
+  .pl__track-cover,
+  .pl__ball-texture,
+  .pl__ball-inner-shadow,
+  .pl__ball-side-shadows {
+    border-radius: 50%;
+  }
+
+  /* outer wall of the groove: shaded at the top, lit at the bottom */
   .pl__outer-ring {
-    inset: 0;
-    border-radius: 50%;
-    background: var(--pl-track);
+    inset: 0.25em;
+    background: var(--pl-bg);
     box-shadow:
-      0 0.3em 0.6em rgb(17 12 5 / 0.12) inset,
-      0 -0.15em 0.3em rgb(255 255 255 / 0.6) inset;
+      0 0.9em 1.3em hsl(var(--pl-hue) 25% 35% / 0.3) inset,
+      0 0.25em 0.35em hsl(var(--pl-hue) 25% 35% / 0.12) inset,
+      0 -0.5em 0.8em var(--pl-light) inset;
   }
+  /* the raised middle the groove runs around */
   .pl__inner-ring {
-    inset: 3.25em;
-    border-radius: 50%;
-    background: var(--background);
+    inset: 2.8em;
+    background: var(--pl-bg);
     box-shadow:
-      0 0.35em 0.7em rgb(17 12 5 / 0.14),
-      0 0 0 0.1em rgb(17 12 5 / 0.04);
+      0 0.6em 0.9em hsl(var(--pl-hue) 25% 35% / 0.2),
+      0 -0.4em 0.7em var(--pl-light),
+      0 0.1em 0.15em hsl(var(--pl-hue) 25% 35% / 0.08);
   }
-  /* snow left in the groove behind the ball */
+  /* covers the groove except for the trail just behind the ball */
   .pl__track-cover {
-    inset: 0;
-    border-radius: 50%;
-    background: conic-gradient(from 0deg, transparent 0 55%, rgb(255 255 255 / 0.95) 100%);
-    -webkit-mask: radial-gradient(circle, transparent 4.75em, #000 4.8em, #000 7.9em, transparent 7.95em);
-    mask: radial-gradient(circle, transparent 4.75em, #000 4.8em, #000 7.9em, transparent 7.95em);
+    inset: -0.25em;
+    background: conic-gradient(from 5deg, var(--pl-bg) 210deg, hsl(var(--pl-hue) 90% 95% / 0) 300deg);
     animation: trackCover var(--pl-dur) linear infinite;
   }
-  /* the ball orbits the centre (rotate, then push out along the radius) */
+
+  /* the snow ball: orbits the centre, its light and shadow stay put */
   .pl__ball {
-    top: calc(50% - 1.5em);
-    left: calc(50% - 1.5em);
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    overflow: hidden;
-    background: var(--pl-snow);
+    top: calc(50% - 1.3em);
+    left: calc(50% - 1.3em);
+    width: 2.6em;
+    height: 2.6em;
     animation: ball var(--pl-dur) linear infinite;
   }
   .pl__ball-texture {
+    inset: 0;
+    overflow: hidden;
+    background: hsl(var(--pl-hue) 12% 88%);
+  }
+  /* marbled snow that rolls across the ball */
+  .pl__ball-texture::before {
+    content: "";
+    position: absolute;
     top: 0;
     left: -100%;
     width: 200%;
     height: 100%;
-    background: repeating-linear-gradient(90deg, transparent 0 0.6em, rgb(17 12 5 / 0.06) 0.6em 0.75em);
-    animation: ballTexture calc(var(--pl-dur) / 4) linear infinite;
-  }
-  /* light stays fixed while the ball turns: these counter-rotate */
-  .pl__ball-outer-shadow,
-  .pl__ball-inner-shadow,
-  .pl__ball-side-shadows {
-    inset: 0;
-    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='48'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.09' numOctaves='4' stitchTiles='stitch' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.6 1.25'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 50% 100%;
+    animation: ballTexture calc(var(--pl-dur) / 2) linear infinite;
   }
   .pl__ball-outer-shadow {
-    box-shadow: 0 0.6em 0.8em -0.4em rgb(17 12 5 / 0.35);
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 260%;
+    z-index: -1;
+    border-radius: 0 0 50% 50% / 0 0 40% 40%;
+    background: linear-gradient(hsl(var(--pl-hue) 25% 35% / 0.22), hsl(var(--pl-hue) 25% 35% / 0));
+    filter: blur(0.35em);
+    transform-origin: 50% 0;
     animation: ballOuterShadow var(--pl-dur) linear infinite;
   }
   .pl__ball-inner-shadow {
-    background: radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.9) 0 18%, transparent 45%);
-    box-shadow: -0.4em -0.6em 0.8em rgb(17 12 5 / 0.18) inset;
+    inset: 0;
+    box-shadow:
+      0 -0.45em 0.6em hsl(var(--pl-hue) 25% 35% / 0.28) inset,
+      0 0.2em 0.35em hsl(0 0% 100% / 0.75) inset;
     animation: ballInnerShadow var(--pl-dur) linear infinite;
   }
   .pl__ball-side-shadows {
+    inset: 0;
     box-shadow:
-      0.25em 0 0.4em rgb(17 12 5 / 0.12) inset,
-      -0.25em 0 0.4em rgb(17 12 5 / 0.12) inset;
+      0.18em 0 0.3em hsl(var(--pl-hue) 25% 35% / 0.12) inset,
+      -0.18em 0 0.3em hsl(var(--pl-hue) 25% 35% / 0.12) inset;
   }
+
   @media (prefers-reduced-motion: reduce) {
-    .pl__track-cover,
-    .pl__ball,
-    .pl__ball-texture,
-    .pl__ball-outer-shadow,
-    .pl__ball-inner-shadow {
-      animation-duration: 6s;
+    .pl {
+      --pl-dur: 6s;
     }
   }
 }

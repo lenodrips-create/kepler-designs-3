@@ -47,7 +47,7 @@ export function LoadingScreen() {
       role="status"
       aria-label="Loading kepler designs"
       className={cn(
-        'fixed inset-0 z-[100] grid place-items-center bg-background transition-opacity ease-[cubic-bezier(.4,0,.2,1)]',
+        'fixed inset-0 z-[100] grid place-items-center bg-[hsl(223_90%_95%)] transition-opacity ease-[cubic-bezier(.4,0,.2,1)]',
         phase === 'leaving' ? 'opacity-0' : 'opacity-100',
       )}
       style={{ transitionDuration: `${FADE_MS}ms` }}
