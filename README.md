@@ -17,7 +17,7 @@ Markup and behaviour live in separate files:
 | Hero photo, wordmark, sink-and-dim on scroll | `src/components/hero.tsx` | `src/lib/hero-motion.ts` |
 | 3D word drum | `src/components/direction-drum.tsx` | `src/lib/drum.ts` |
 | Practice (design and engineering) | `src/components/practice.tsx` | `src/lib/reveal.ts` |
-| Services and prices (home page, and also `/services/`) | `src/components/services.tsx` (page shell: `src/pages/services.tsx`) | `src/lib/image-drift.ts` |
+| Services and prices (home page, and also `/services/`) | `src/components/services.tsx` (page shell: `src/pages/services.tsx`) | (none) |
 | Gallery zoom into the film, closing wordmark | `src/components/ui/zoom-parallax.tsx`, `src/components/reel-finale.tsx` | (Framer Motion) |
 
 - `src/content/`: the words and data: drum entries, practice lists, brand logos, services and prices, gallery images

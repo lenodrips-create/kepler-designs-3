@@ -1,8 +1,6 @@
 import { useEffect, useRef, type CSSProperties } from 'react'
 
-import servicesImage from '@/assets/services.jpg'
 import { CONTACT_EMAIL, CURRENCY, individual, packages, terms, type Service } from '@/content/services'
-import { createImageDrift } from '@/lib/image-drift'
 import { observeReveal } from '@/lib/reveal'
 
 const stagger = (i: number) => ({ '--i': i }) as CSSProperties
@@ -53,15 +51,9 @@ function PriceList({ title, items, offset }: { title: string; items: Service[]; 
 /** Services and prices. Used on the home page (as a section) and on /services/ (as the page). */
 export function Services({ asPage = false }: { asPage?: boolean }) {
   const ref = useRef<HTMLDivElement>(null)
-  const frameRef = useRef<HTMLDivElement>(null)
-  const imgRef = useRef<HTMLImageElement>(null)
   const Heading = asPage ? 'h1' : 'h2'
 
   useEffect(() => (ref.current ? observeReveal(ref.current) : undefined), [])
-  useEffect(() => {
-    if (!frameRef.current || !imgRef.current) return
-    return createImageDrift(frameRef.current, imgRef.current)
-  }, [])
 
   return (
     <div ref={ref} id={asPage ? undefined : 'services'} role={asPage ? undefined : 'region'} aria-labelledby={asPage ? undefined : 'services-title'}>
@@ -78,23 +70,6 @@ export function Services({ asPage = false }: { asPage?: boolean }) {
             by the same people, from first sketch to launch.
           </p>
         </section>
-
-        <div
-          ref={frameRef}
-          data-reveal
-          style={stagger(2)}
-          className="relative mx-6 mt-10 aspect-[4/3] overflow-hidden md:mx-14 md:mt-12 md:aspect-[3/2] md:max-w-2xl"
-        >
-          <img
-            ref={imgRef}
-            src={servicesImage}
-            alt="Two people sketching a page layout on paper between laptops"
-            width={2000}
-            height={1335}
-            className="absolute inset-x-0 top-0 h-[120%] w-full object-cover will-change-transform"
-            style={{ transform: 'translate3d(0, -10%, 0)' }}
-          />
-        </div>
 
         {/* packages */}
         <section aria-labelledby="packages-title" className="px-6 pt-20 md:px-14 md:pt-28">
