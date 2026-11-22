@@ -5,6 +5,7 @@ import { DirectionDrum } from '@/components/direction-drum'
 import { Hero } from '@/components/hero'
 import { Practice } from '@/components/practice'
 import { Services } from '@/components/services'
+import { SiteNav } from '@/components/site-nav'
 import { ReelFinale } from '@/components/reel-finale'
 import { ZoomParallax } from '@/components/ui/zoom-parallax'
 import { parallaxImages } from '@/content/parallax-images'
@@ -17,6 +18,7 @@ export default function App() {
 
   return (
     <>
+      <SiteNav />
       <Hero />
       {/* z-10 + solid background so the page slides over the sinking hero */}
       <main className="relative z-10 bg-background pt-6 md:pt-10">
@@ -29,7 +31,7 @@ export default function App() {
           <Services />
         </div>
 
-        <section aria-label="Gallery" className="relative w-full overflow-x-clip">
+        <section id="work" aria-label="Gallery" className="relative w-full overflow-x-clip">
           <div className="relative flex h-0 items-center justify-center">
             {/* Radial spotlight */}
             <div

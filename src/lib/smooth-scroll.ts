@@ -36,6 +36,14 @@ export function scrollToTop(): void {
   else window.scrollTo({ top: 0, behavior: 'auto' })
 }
 
+/** Glide to an element (by id), leaving `offset` px above it. */
+export function scrollToId(id: string, offset = 0): void {
+  const el = document.getElementById(id)
+  if (!el) return
+  if (lenis) lenis.scrollTo(el, { offset: -offset, duration: 1.6, easing: (t) => 1 - Math.pow(1 - t, 4) })
+  else el.scrollIntoView()
+}
+
 /** Subscribe to the page scroll. Called once right away, then every frame the page moves. */
 export function onScroll(listener: Listener): () => void {
   listeners.add(listener)

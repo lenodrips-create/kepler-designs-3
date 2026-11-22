@@ -64,7 +64,7 @@ export function Services({ asPage = false }: { asPage?: boolean }) {
   }, [])
 
   return (
-    <div ref={ref} role={asPage ? undefined : 'region'} aria-labelledby={asPage ? undefined : 'services-title'}>
+    <div ref={ref} id={asPage ? undefined : 'services'} role={asPage ? undefined : 'region'} aria-labelledby={asPage ? undefined : 'services-title'}>
         <section className="px-6 pt-10 md:px-14 md:pt-16">
           <Heading
             id="services-title"

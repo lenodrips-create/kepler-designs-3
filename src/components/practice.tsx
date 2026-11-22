@@ -46,7 +46,7 @@ export function Practice() {
   useEffect(() => (ref.current ? observeReveal(ref.current) : undefined), [])
 
   return (
-    <section ref={ref} aria-labelledby="practice-title" className="px-6 pt-20 pb-20 md:px-14 md:pt-28 md:pb-28">
+    <section id="practice" ref={ref} aria-labelledby="practice-title" className="px-6 pt-20 pb-20 md:px-14 md:pt-28 md:pb-28">
       <h2
         id="practice-title"
         data-reveal
