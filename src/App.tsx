@@ -4,6 +4,7 @@ import { About } from '@/components/about'
 import { Brands } from '@/components/brands'
 import { DirectionDrum } from '@/components/direction-drum'
 import { Hero } from '@/components/hero'
+import { Languages } from '@/components/languages'
 import { Practice } from '@/components/practice'
 import { Services } from '@/components/services'
 import { SiteNav } from '@/components/site-nav'
@@ -30,6 +31,7 @@ export default function App() {
         <div className="relative z-10 -mt-[35vh] bg-background">
           <Practice />
           <Services />
+          <Languages />
           <Brands />
         </div>
 
