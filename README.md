@@ -15,6 +15,7 @@ Markup and behaviour live in separate files:
 | --- | --- | --- |
 | Smooth scrolling (Lenis) | `src/App.tsx` | `src/lib/smooth-scroll.ts` |
 | Hero photo, wordmark, sink-and-dim on scroll | `src/components/hero.tsx` | `src/lib/hero-motion.ts` |
+| About, words part around the cursor | `src/components/about.tsx` | `src/lib/word-spread.ts` |
 | 3D word drum | `src/components/direction-drum.tsx` | `src/lib/drum.ts` |
 | Practice (design and engineering) | `src/components/practice.tsx` | `src/lib/reveal.ts` |
 | Services and prices (home page, and also `/services/`) | `src/components/services.tsx` (page shell: `src/pages/services.tsx`) | (none) |
