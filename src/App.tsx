@@ -27,8 +27,8 @@ export default function App() {
         {/* slides up over the end of the drum, like the page over the hero */}
         <div className="relative z-10 -mt-[35vh] bg-background">
           <Practice />
-          <Brands />
           <Services />
+          <Brands />
         </div>
 
         <section id="work" aria-label="Gallery" className="relative w-full overflow-x-clip">

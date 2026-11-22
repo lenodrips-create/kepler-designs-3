@@ -19,18 +19,18 @@ const items: MenuItem[] = [
     iconColor: 'group-hover:text-orange-500',
   },
   {
-    icon: <Briefcase className="h-5 w-5" />,
-    label: 'Clients',
-    href: '#clients',
-    gradient: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)',
-    iconColor: 'group-hover:text-green-500',
-  },
-  {
     icon: <Tag className="h-5 w-5" />,
     label: 'Services',
     href: '#services',
     gradient: 'radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)',
     iconColor: 'group-hover:text-red-500',
+  },
+  {
+    icon: <Briefcase className="h-5 w-5" />,
+    label: 'Clients',
+    href: '#clients',
+    gradient: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)',
+    iconColor: 'group-hover:text-green-500',
   },
   {
     icon: <Clapperboard className="h-5 w-5" />,
