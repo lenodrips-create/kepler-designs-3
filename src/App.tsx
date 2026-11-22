@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 
+import { About } from '@/components/about'
 import { Brands } from '@/components/brands'
 import { DirectionDrum } from '@/components/direction-drum'
 import { Hero } from '@/components/hero'
@@ -22,6 +23,7 @@ export default function App() {
       <Hero />
       {/* z-10 + solid background so the page slides over the sinking hero */}
       <main className="relative z-10 bg-background pt-6 md:pt-10">
+        <About />
         <DirectionDrum />
 
         {/* slides up over the end of the drum, like the page over the hero */}
