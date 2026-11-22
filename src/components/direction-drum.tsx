@@ -48,7 +48,7 @@ export function DirectionDrum() {
             ref={headerRef}
             className="absolute inset-x-0 top-[max(2.5rem,8vh)] z-10 mx-auto max-w-xl px-6 text-center will-change-[transform,opacity]"
           >
-            <p className="mb-3 flex items-center justify-center gap-1.5 text-xs font-medium tracking-wide text-brand">
+            <p className="mb-3 flex items-center justify-center gap-1.5 text-xs font-medium tracking-wide text-brand-text">
               <span aria-hidden="true" className="inline-block size-1.5 rotate-45 bg-brand" />
               The studio
             </p>
@@ -102,7 +102,7 @@ export function DirectionDrum() {
           {/* counter + subtitle */}
           <div className="absolute inset-x-6 bottom-8 flex items-baseline justify-between gap-6 text-sm md:inset-x-14 md:bottom-12 md:text-base">
             <p className="shrink-0 tabular-nums text-muted-foreground">
-              <span className="font-semibold text-brand">{pad(active + 1)}</span> of {pad(count)}
+              <span className="font-semibold text-brand-text">{pad(active + 1)}</span> of {pad(count)}
             </p>
             <p key={active} className="truncate animate-in fade-in slide-in-from-bottom-1 duration-500">
               {directions[active].subtitle}

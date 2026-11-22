@@ -21,7 +21,7 @@
 :root {
   --radius: 0.75rem;
   --background: #f7f3ec;                /* warm cream */
-  --foreground: #1a0e08;                /* warm ink */
+  --foreground: #110c05;                /* warm ink: the darkest shadow in the hero photo */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -31,7 +31,7 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: color-mix(in srgb, var(--foreground) 60%, var(--background)); /* warm grey, AA on cream */
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -42,6 +42,9 @@
   /* kepler designs, sampled from the hero photo */
   --brand: #8e6944;                     /* caramel bronze, the lit edge of the figures */
   --glow: #e5be80;                      /* honey amber, the wall */
+  /* Caramel is 4.46:1 on the cream: fine for large type, a hair short of
+     AA (4.5:1) for small text. Small accent text mixes in some bronze. */
+  --brand-text: color-mix(in srgb, var(--brand) 85%, #4b3220);
   --drum-idle: color-mix(in srgb, var(--foreground) 36%, var(--background));
 }
 
@@ -74,6 +77,7 @@
   --color-ring: var(--ring);
 
   --color-brand: var(--brand);
+  --color-brand-text: var(--brand-text);
   --color-glow: var(--glow);
   --color-drum-idle: var(--drum-idle);
 }
@@ -154,5 +158,21 @@
   }
   .drum-row[data-active="true"] .drum-lit {
     opacity: 1;
+  }
+}
+
+/* ---------- Reveal on scroll (see src/lib/reveal.ts) ---------- */
+@layer components {
+  [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i, 0) * 70ms);
+  }
+  [data-reveal="in"] {
+    opacity: 1;
+    transform: none;
   }
 }
