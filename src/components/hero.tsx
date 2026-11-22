@@ -46,18 +46,24 @@ export function Hero() {
         />
       </div>
 
-      <svg
-        ref={svgRef}
-        role="img"
-        aria-label={WORD}
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMax meet"
-        className="pointer-events-none absolute bottom-3 left-2.5 block h-auto w-[calc(100%-1.1875rem)] overflow-visible opacity-0 transition-opacity duration-900 ease-[cubic-bezier(.45,0,.55,1)] data-[ready=true]:opacity-100"
-      >
-        <text ref={textRef} className="fill-white font-sans font-normal">
-          {WORD}
-        </text>
-      </svg>
+      {/* location, then the wordmark, sitting on the bottom edge */}
+      <div className="pointer-events-none absolute right-[0.5625rem] bottom-3 left-2.5 flex flex-col">
+        <p className="mb-1 pl-[0.2em] font-display text-xl font-medium tracking-[-0.01em] text-white [text-shadow:0_1px_16px_rgb(0_0_0/0.4)] md:mb-2 md:text-3xl">
+          Greencastle, PA
+        </p>
+        <svg
+          ref={svgRef}
+          role="img"
+          aria-label={WORD}
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMax meet"
+          className="block h-auto w-full overflow-visible opacity-0 transition-opacity duration-900 ease-[cubic-bezier(.45,0,.55,1)] data-[ready=true]:opacity-100"
+        >
+          <text ref={textRef} className="fill-white font-sans font-normal">
+            {WORD}
+          </text>
+        </svg>
+      </div>
 
       <div
         ref={shadeRef}
