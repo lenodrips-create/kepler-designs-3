@@ -59,20 +59,6 @@ export function Practice() {
         <Column label="Design" items={design} offset={0} />
         <Column label="Engineering" items={engineering} offset={2} />
       </div>
-
-      <a
-        href="services/"
-        data-reveal
-        className="group mt-16 flex items-baseline justify-between border-y border-foreground/20 py-6 md:mt-24 md:py-8"
-      >
-        <span className="font-display text-3xl font-semibold tracking-[-0.03em] md:text-5xl">Services and prices</span>
-        <span
-          aria-hidden="true"
-          className="font-display text-3xl transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-2 md:text-5xl"
-        >
-          →
-        </span>
-      </a>
     </section>
   )
 }
