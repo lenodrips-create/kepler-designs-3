@@ -13,6 +13,7 @@ Markup and behaviour live in separate files:
 
 | What | Markup (React) | Behaviour (TypeScript) |
 | --- | --- | --- |
+| First-visit loading screen (3s, snow ball spinner) | `src/components/loading-screen.tsx`, `src/components/ui/snow-ball-loading-spinner.tsx` | spinner CSS in `src/index.css` |
 | Smooth scrolling (Lenis) | `src/App.tsx` | `src/lib/smooth-scroll.ts` |
 | Hero photo, wordmark, sink-and-dim on scroll | `src/components/hero.tsx` | `src/lib/hero-motion.ts` |
 | About, words part around the cursor | `src/components/about.tsx` | `src/lib/word-spread.ts` |

@@ -176,3 +176,154 @@
     transform: none;
   }
 }
+
+/* ---------- Snow ball loading spinner (components/ui/snow-ball-loading-spinner.tsx) ----------
+   The keyframes below are exactly as given in the component prompt. The
+   prompt didn't include the styles for the spinner's parts, so those are
+   written here to match the keyframes: a ball rolling round a grooved
+   track (radius 6.5em, dipping to 6em halfway), leaving a snow trail. */
+
+@keyframes ball {
+  from {
+    transform: rotate(0) translateY(-6.5em);
+  }
+  50% {
+    transform: rotate(180deg) translateY(-6em);
+  }
+  to {
+    transform: rotate(360deg) translateY(-6.5em);
+  }
+}
+
+@keyframes ballInnerShadow {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes ballOuterShadow {
+  from {
+    transform: rotate(20deg);
+  }
+  to {
+    transform: rotate(-340deg);
+  }
+}
+
+@keyframes ballTexture {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes trackCover {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@layer components {
+  .pl {
+    --pl-dur: 2s;
+    --pl-track: color-mix(in srgb, var(--foreground) 7%, var(--background));
+    --pl-snow: #fff;
+    position: relative;
+    width: 16em;
+    height: 16em;
+    font-size: clamp(10px, 2.4vmin, 15px);
+  }
+  .pl__outer-ring,
+  .pl__inner-ring,
+  .pl__track-cover,
+  .pl__ball,
+  .pl__ball-texture,
+  .pl__ball-outer-shadow,
+  .pl__ball-inner-shadow,
+  .pl__ball-side-shadows {
+    position: absolute;
+  }
+  /* the groove the ball runs in: an outer disc with a raised inner disc */
+  .pl__outer-ring {
+    inset: 0;
+    border-radius: 50%;
+    background: var(--pl-track);
+    box-shadow:
+      0 0.3em 0.6em rgb(17 12 5 / 0.12) inset,
+      0 -0.15em 0.3em rgb(255 255 255 / 0.6) inset;
+  }
+  .pl__inner-ring {
+    inset: 3.25em;
+    border-radius: 50%;
+    background: var(--background);
+    box-shadow:
+      0 0.35em 0.7em rgb(17 12 5 / 0.14),
+      0 0 0 0.1em rgb(17 12 5 / 0.04);
+  }
+  /* snow left in the groove behind the ball */
+  .pl__track-cover {
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0 55%, rgb(255 255 255 / 0.95) 100%);
+    -webkit-mask: radial-gradient(circle, transparent 4.75em, #000 4.8em, #000 7.9em, transparent 7.95em);
+    mask: radial-gradient(circle, transparent 4.75em, #000 4.8em, #000 7.9em, transparent 7.95em);
+    animation: trackCover var(--pl-dur) linear infinite;
+  }
+  /* the ball orbits the centre (rotate, then push out along the radius) */
+  .pl__ball {
+    top: calc(50% - 1.5em);
+    left: calc(50% - 1.5em);
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--pl-snow);
+    animation: ball var(--pl-dur) linear infinite;
+  }
+  .pl__ball-texture {
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: repeating-linear-gradient(90deg, transparent 0 0.6em, rgb(17 12 5 / 0.06) 0.6em 0.75em);
+    animation: ballTexture calc(var(--pl-dur) / 4) linear infinite;
+  }
+  /* light stays fixed while the ball turns: these counter-rotate */
+  .pl__ball-outer-shadow,
+  .pl__ball-inner-shadow,
+  .pl__ball-side-shadows {
+    inset: 0;
+    border-radius: 50%;
+  }
+  .pl__ball-outer-shadow {
+    box-shadow: 0 0.6em 0.8em -0.4em rgb(17 12 5 / 0.35);
+    animation: ballOuterShadow var(--pl-dur) linear infinite;
+  }
+  .pl__ball-inner-shadow {
+    background: radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.9) 0 18%, transparent 45%);
+    box-shadow: -0.4em -0.6em 0.8em rgb(17 12 5 / 0.18) inset;
+    animation: ballInnerShadow var(--pl-dur) linear infinite;
+  }
+  .pl__ball-side-shadows {
+    box-shadow:
+      0.25em 0 0.4em rgb(17 12 5 / 0.12) inset,
+      -0.25em 0 0.4em rgb(17 12 5 / 0.12) inset;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pl__track-cover,
+    .pl__ball,
+    .pl__ball-texture,
+    .pl__ball-outer-shadow,
+    .pl__ball-inner-shadow {
+      animation-duration: 6s;
+    }
+  }
+}

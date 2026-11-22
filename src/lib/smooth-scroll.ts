@@ -13,6 +13,7 @@ type Listener = (scrollY: number) => void
 const listeners = new Set<Listener>()
 let lenis: Lenis | null = null
 let nativeFrame = 0
+let locked = false
 
 function emit(y: number) {
   for (const listener of listeners) listener(y)
@@ -28,6 +29,16 @@ function onNativeScroll() {
 
 export function currentScroll(): number {
   return lenis ? lenis.scroll : window.scrollY
+}
+
+/** Freeze or release page scrolling (e.g. while the loading screen is up). */
+export function setScrollLocked(on: boolean): void {
+  locked = on
+  document.documentElement.style.overflow = on ? 'hidden' : ''
+  if (lenis) {
+    if (on) lenis.stop()
+    else lenis.start()
+  }
 }
 
 /** Glide back to the top of the page (instant for reduced motion). */
@@ -72,6 +83,7 @@ export function startSmoothScroll(): () => void {
     wheelMultiplier: 0.85,
     touchMultiplier: 1,
   })
+  if (locked) lenis.stop()
   const off = lenis.on('scroll', (l) => emit(l.scroll))
 
   return () => {

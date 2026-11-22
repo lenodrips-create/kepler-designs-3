@@ -5,6 +5,7 @@ import { Brands } from '@/components/brands'
 import { DirectionDrum } from '@/components/direction-drum'
 import { Hero } from '@/components/hero'
 import { Languages } from '@/components/languages'
+import { LoadingScreen } from '@/components/loading-screen'
 import { Practice } from '@/components/practice'
 import { Services } from '@/components/services'
 import { SiteNav } from '@/components/site-nav'
@@ -20,6 +21,7 @@ export default function App() {
 
   return (
     <>
+      <LoadingScreen />
       <SiteNav />
       <Hero />
       {/* z-10 + solid background so the page slides over the sinking hero */}
