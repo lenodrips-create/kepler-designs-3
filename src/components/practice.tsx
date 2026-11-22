@@ -12,10 +12,10 @@ function Column({ label, items, offset }: { label: string; items: Capability[]; 
       <div
         data-reveal
         style={stagger(offset)}
-        className="flex items-baseline justify-between border-b border-foreground/20 pb-3 text-sm"
+        className="flex items-baseline justify-between border-b border-foreground/20 pb-3"
       >
-        <h3 className="font-medium">{label}</h3>
-        <span className="text-muted-foreground tabular-nums">{pad(items.length)}</span>
+        <h3 className="font-display text-2xl font-semibold tracking-[-0.02em] md:text-3xl">{label}</h3>
+        <span className="text-sm text-muted-foreground tabular-nums">{pad(items.length)}</span>
       </div>
       <ol>
         {items.map((c, i) => (
@@ -47,35 +47,32 @@ export function Practice() {
 
   return (
     <section ref={ref} aria-labelledby="practice-title" className="px-6 pt-20 pb-20 md:px-14 md:pt-28 md:pb-28">
-      <div className="grid gap-6 md:grid-cols-12 md:items-end">
-        <div className="md:col-span-7">
-          <p data-reveal className="mb-4 flex items-center gap-1.5 text-xs font-medium tracking-wide text-brand-text">
-            <span aria-hidden="true" className="inline-block size-1.5 rotate-45 bg-brand" />
-            Practice
-          </p>
-          <h2
-            id="practice-title"
-            data-reveal
-            style={stagger(1)}
-            className="font-display text-4xl leading-[1.02] font-semibold tracking-[-0.035em] text-balance md:text-6xl"
-          >
-            Designed and engineered in the same room.
-          </h2>
-        </div>
-        <p
-          data-reveal
-          style={stagger(2)}
-          className="max-w-md text-base leading-relaxed text-muted-foreground md:col-span-4 md:col-start-9"
-        >
-          No hand-off gap. The people drawing the interface are the people shipping it, so what you approve is what
-          goes live.
-        </p>
-      </div>
+      <h2
+        id="practice-title"
+        data-reveal
+        className="max-w-3xl font-display text-4xl leading-[1.02] font-semibold tracking-[-0.035em] text-balance md:text-6xl"
+      >
+        Designed and engineered in the same room.
+      </h2>
 
       <div className="mt-14 grid gap-14 md:mt-20 md:grid-cols-2">
         <Column label="Design" items={design} offset={0} />
         <Column label="Engineering" items={engineering} offset={2} />
       </div>
+
+      <a
+        href="services/"
+        data-reveal
+        className="group mt-16 flex items-baseline justify-between border-y border-foreground/20 py-6 md:mt-24 md:py-8"
+      >
+        <span className="font-display text-3xl font-semibold tracking-[-0.03em] md:text-5xl">Services and prices</span>
+        <span
+          aria-hidden="true"
+          className="font-display text-3xl transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-2 md:text-5xl"
+        >
+          →
+        </span>
+      </a>
     </section>
   )
 }

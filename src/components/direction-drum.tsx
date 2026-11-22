@@ -48,10 +48,6 @@ export function DirectionDrum() {
             ref={headerRef}
             className="absolute inset-x-0 top-[max(2.5rem,8vh)] z-10 mx-auto max-w-xl px-6 text-center will-change-[transform,opacity]"
           >
-            <p className="mb-3 flex items-center justify-center gap-1.5 text-xs font-medium tracking-wide text-brand-text">
-              <span aria-hidden="true" className="inline-block size-1.5 rotate-45 bg-brand" />
-              The studio
-            </p>
             <h2
               id="directions-title"
               className="font-display text-3xl leading-[1.05] font-semibold tracking-[-0.03em] text-balance md:text-[2.75rem]"

@@ -17,11 +17,10 @@ Markup and behaviour live in separate files:
 | Hero photo, wordmark, sink-and-dim on scroll | `src/components/hero.tsx` | `src/lib/hero-motion.ts` |
 | 3D word drum | `src/components/direction-drum.tsx` | `src/lib/drum.ts` |
 | Practice (design and engineering) | `src/components/practice.tsx` | `src/lib/reveal.ts` |
-| Colour study and accent switcher | `src/components/palette-study.tsx` | `src/lib/contrast.ts`, `src/lib/theme.ts` |
-| Colophon (live page readings) | `src/components/colophon.tsx` | `src/lib/page-metrics.ts` |
+| Services page (`/services/`) | `src/pages/services.tsx`, entry `services/index.html` | `src/lib/image-drift.ts` |
 | Gallery zoom into the film, closing wordmark | `src/components/ui/zoom-parallax.tsx`, `src/components/reel-finale.tsx` | (Framer Motion) |
 
-- `src/content/`: the words and data: drum entries, practice lists, palette tones, gallery images
+- `src/content/`: the words and data: drum entries, practice lists, services and prices, gallery images
 - `src/index.css`: Tailwind, theme colours, fonts, and the drum's CSS
 
 Pushing to `main` builds the site and publishes it to GitHub Pages

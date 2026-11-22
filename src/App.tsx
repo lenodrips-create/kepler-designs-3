@@ -1,9 +1,7 @@
 import { useEffect } from 'react'
 
-import { Colophon } from '@/components/colophon'
 import { DirectionDrum } from '@/components/direction-drum'
 import { Hero } from '@/components/hero'
-import { PaletteStudy } from '@/components/palette-study'
 import { Practice } from '@/components/practice'
 import { ReelFinale } from '@/components/reel-finale'
 import { ZoomParallax } from '@/components/ui/zoom-parallax'
@@ -25,8 +23,6 @@ export default function App() {
         {/* slides up over the end of the drum, like the page over the hero */}
         <div className="relative z-10 -mt-[35vh] bg-background">
           <Practice />
-          <PaletteStudy />
-          <Colophon />
         </div>
 
         <section aria-label="Gallery" className="relative w-full overflow-x-clip">
