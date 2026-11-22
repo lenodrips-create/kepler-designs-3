@@ -29,7 +29,7 @@ export function Languages() {
           .then(({ createCodeIcons }) =>
             createCodeIcons(
               stage,
-              languages.map((l) => ({ key: l.key, url: l.model })),
+              languages.map((l) => ({ key: l.key, url: l.model, tilt: 'tilt' in l ? l.tilt : undefined })),
             ),
           )
           .then((stop) => {
@@ -69,11 +69,11 @@ export function Languages() {
       <div
         ref={stageRef}
         role="img"
-        aria-label="3D icons for HTML, JavaScript, CSS, TypeScript and Swift"
+        aria-label="3D icons for HTML, JavaScript, CSS, TypeScript, SQL, and JSON and APIs"
         className="relative mt-4 h-[26rem] w-full opacity-0 transition-opacity duration-1000 data-[failed=true]:hidden data-[ready=true]:opacity-100 sm:h-[24rem] md:mt-2 md:h-[30rem]"
       />
 
-      <ol className="mx-6 grid border-t border-foreground/20 md:mx-14 md:grid-cols-5 md:gap-x-6">
+      <ol className="mx-6 grid border-t border-foreground/20 md:mx-14 md:grid-cols-3 md:gap-x-6 lg:grid-cols-6">
         {languages.map((l, i) => (
           <li
             key={l.key}

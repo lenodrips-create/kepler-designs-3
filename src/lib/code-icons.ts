@@ -43,7 +43,12 @@ const POINTER = 14 // smoothing on the cursor itself
 
 const damp = (rate: number, dt: number) => 1 - Math.exp(-rate * dt)
 
-export type IconSource = { key: string; url: string }
+export type IconSource = {
+  key: string
+  url: string
+  /** Tip the icon toward the camera (radians), e.g. so a cylinder shows its top. */
+  tilt?: number
+}
 
 export async function createCodeIcons(stage: HTMLElement, sources: IconSource[]): Promise<() => void> {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -83,6 +88,7 @@ export async function createCodeIcons(stage: HTMLElement, sources: IconSource[])
   type Item = {
     pivot: Group
     phase: number
+    tilt: number
     follow: number // 0..1: how much this icon is looking at the cursor
     home: Vector3
     halfSize: Vector3
@@ -102,7 +108,7 @@ export async function createCodeIcons(stage: HTMLElement, sources: IconSource[])
       pivot.add(model)
       scene.add(pivot)
       const size = new Box3().setFromObject(model).getSize(new Vector3())
-      return { pivot, phase: i * 1.3, follow: 0, home: new Vector3(), halfSize: size.multiplyScalar(0.5) }
+      return { pivot, phase: i * 1.3, tilt: src.tilt ?? 0, follow: 0, home: new Vector3(), halfSize: size.multiplyScalar(0.5) }
     }),
   )
 
@@ -224,7 +230,7 @@ export async function createCodeIcons(stage: HTMLElement, sources: IconSource[])
       // idle float and sway, as in the original
       pos.copy(it.home)
       if (!reduce) pos.y += Math.sin(t * 1.2 + it.phase) * 0.18
-      euler.set(reduce ? 0 : Math.sin(t * 0.8 + it.phase) * 0.06, reduce ? 0.3 : Math.sin(t * 0.6 + it.phase) * 0.5, 0)
+      euler.set(it.tilt + (reduce ? 0 : Math.sin(t * 0.8 + it.phase) * 0.06), reduce ? 0.3 : Math.sin(t * 0.6 + it.phase) * 0.5, 0)
       idleQ.setFromEuler(euler)
 
       it.follow += ((i === active ? 1 : 0) - it.follow) * damp(HANDOFF, dt)
@@ -234,7 +240,7 @@ export async function createCodeIcons(stage: HTMLElement, sources: IconSource[])
         const dy = lookAt.y - pos.y
         const dz = Math.max(0.5, lookAt.z - pos.z)
         euler.set(
-          Math.max(-MAX_PITCH, Math.min(MAX_PITCH, -Math.atan2(dy, Math.hypot(dx, dz)))),
+          it.tilt + Math.max(-MAX_PITCH, Math.min(MAX_PITCH, -Math.atan2(dy, Math.hypot(dx, dz)))),
           Math.max(-MAX_YAW, Math.min(MAX_YAW, Math.atan2(dx, dz))),
           0,
         )
