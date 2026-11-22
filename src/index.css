@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@fontsource-variable/inter-tight";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -37,9 +38,10 @@
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
 
-  /* kepler designs */
-  --brand: oklch(0.64 0.2 42);          /* warm orange, pulled from the hero light */
-  --drum-idle: oklch(0.72 0.012 70);    /* warm grey for off-centre rows */
+  /* kepler designs, sampled from the hero photo */
+  --brand: #8e6944;                     /* caramel bronze, the lit edge of the figures */
+  --glow: #e5be80;                      /* honey amber, the wall */
+  --drum-idle: oklch(0.8 0.018 75);     /* warm stone grey for off-centre rows */
 }
 
 @theme inline {
@@ -70,6 +72,7 @@
   --color-ring: var(--ring);
 
   --color-brand: var(--brand);
+  --color-glow: var(--glow);
   --color-drum-idle: var(--drum-idle);
 }
 
