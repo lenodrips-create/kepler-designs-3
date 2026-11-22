@@ -1,7 +1,7 @@
 import { useEffect, useRef, type CSSProperties } from 'react'
 
 import servicesImage from '@/assets/services.jpg'
-import { CONTACT_EMAIL, CURRENCY, individual, ongoing, packages, terms, type Service } from '@/content/services'
+import { CONTACT_EMAIL, CURRENCY, individual, packages, terms, type Service } from '@/content/services'
 import { createImageDrift } from '@/lib/image-drift'
 import { observeReveal } from '@/lib/reveal'
 
@@ -83,7 +83,7 @@ export function Services({ asPage = false }: { asPage?: boolean }) {
           ref={frameRef}
           data-reveal
           style={stagger(2)}
-          className="relative mt-12 aspect-[4/3] overflow-hidden md:mt-16 md:aspect-[21/9]"
+          className="relative mx-6 mt-10 aspect-[4/3] overflow-hidden md:mx-14 md:mt-12 md:aspect-[3/2] md:max-w-2xl"
         >
           <img
             ref={imgRef}
@@ -132,9 +132,6 @@ export function Services({ asPage = false }: { asPage?: boolean }) {
 
         <div className="mt-20 md:mt-28">
           <PriceList title="Individual services" items={individual} offset={0} />
-        </div>
-        <div className="mt-20 md:mt-28">
-          <PriceList title="Ongoing" items={ongoing} offset={0} />
         </div>
 
         {/* how pricing works */}

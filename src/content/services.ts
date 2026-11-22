@@ -17,7 +17,7 @@ export type Package = {
 export const packages: Package[] = [
   {
     name: 'Landing page',
-    from: 4500,
+    from: 1800,
     timeline: '2–3 weeks',
     summary: 'One focused page that explains what you do and gets people to act.',
     includes: [
@@ -30,7 +30,7 @@ export const packages: Package[] = [
   },
   {
     name: 'Website',
-    from: 12000,
+    from: 5000,
     timeline: '5–8 weeks',
     summary: 'A multi-page site for a company that has outgrown its template.',
     includes: [
@@ -44,7 +44,7 @@ export const packages: Package[] = [
   },
   {
     name: 'Web app',
-    from: 28000,
+    from: 12000,
     timeline: '8–14 weeks',
     summary: 'Product design and front-end engineering for a working application.',
     includes: [
@@ -61,16 +61,11 @@ export const packages: Package[] = [
 export type Service = { name: string; detail: string; price: number; from?: boolean; per?: string }
 
 export const individual: Service[] = [
-  { name: 'Brand identity', detail: 'Logo, type, colour and a usage guide', price: 6000, from: true },
-  { name: 'Design system', detail: 'Tokens and components, in Figma and in code', price: 8000, from: true },
-  { name: 'Prototype', detail: 'A working prototype in code to test an idea with real users', price: 5000, from: true },
-  { name: 'Motion design', detail: 'Interaction and scroll motion for an existing site', price: 3000, from: true },
-  { name: 'Performance and accessibility audit', detail: 'A written report with fixes, ranked by impact', price: 2400 },
-]
-
-export const ongoing: Service[] = [
-  { name: 'Care plan', detail: 'Updates, uptime monitoring and up to 8 hours of changes', price: 900, per: 'month' },
-  { name: 'Day rate', detail: 'For work that doesn’t fit a package', price: 950, per: 'day' },
+  { name: 'Brand identity', detail: 'Logo, type, colour and a usage guide', price: 2500, from: true },
+  { name: 'Design system', detail: 'Tokens and components, in Figma and in code', price: 3500, from: true },
+  { name: 'Prototype', detail: 'A working prototype in code to test an idea with real users', price: 2000, from: true },
+  { name: 'Motion design', detail: 'Interaction and scroll motion for an existing site', price: 1200, from: true },
+  { name: 'Performance and accessibility audit', detail: 'A written report with fixes, ranked by impact', price: 950 },
 ]
 
 export const terms: { title: string; detail: string }[] = [
