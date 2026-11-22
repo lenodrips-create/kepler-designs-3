@@ -64,10 +64,13 @@ export function MenuBar({
   items,
   onSelect,
   className,
+  leading,
 }: {
   items: MenuItem[]
   onSelect?: (href: string) => void
   className?: string
+  /** Shown at the start of the bar, before the items (e.g. a logo). */
+  leading?: React.ReactNode
 }) {
   const handle = (href: string) => (e: React.MouseEvent) => {
     if (!onSelect) return
@@ -89,7 +92,9 @@ export function MenuBar({
         className="absolute -inset-2 bg-radial from-transparent via-blue-400/20 via-30% via-purple-400/20 via-60% via-red-400/20 via-90% to-transparent rounded-3xl z-0 pointer-events-none"
         variants={navGlowVariants}
       />
-      <ul className="flex items-center gap-1 sm:gap-2 relative z-10">
+      <div className="flex items-center relative z-10">
+      {leading}
+      <ul className="flex items-center gap-1 sm:gap-2">
         {items.map((item) => (
           <motion.li key={item.label} className="relative">
             <motion.div
@@ -136,6 +141,7 @@ export function MenuBar({
           </motion.li>
         ))}
       </ul>
+      </div>
     </motion.nav>
   )
 }

@@ -1,5 +1,6 @@
 import { Briefcase, Clapperboard, Home, Layers, Tag } from 'lucide-react'
 
+import logo from '@/assets/logo.svg'
 import { MenuBar, type MenuItem } from '@/components/ui/glow-menu'
 import { scrollToId, scrollToTop } from '@/lib/smooth-scroll'
 
@@ -48,6 +49,19 @@ export function SiteNav() {
       <MenuBar
         items={items}
         className="pointer-events-auto"
+        leading={
+          <a
+            href="#top"
+            aria-label="kepler designs, back to top"
+            onClick={(e) => {
+              e.preventDefault()
+              scrollToTop()
+            }}
+            className="mr-1 flex shrink-0 items-center rounded-xl px-2 py-1.5 transition-transform duration-300 hover:scale-105 sm:mr-2"
+          >
+            <img src={logo} alt="" width={1137} height={831} className="h-6 w-auto sm:h-7" />
+          </a>
+        }
         onSelect={(href) => {
           if (href === '#top') scrollToTop()
           else scrollToId(href.slice(1), 88)
