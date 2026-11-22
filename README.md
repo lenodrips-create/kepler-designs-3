@@ -19,7 +19,7 @@ Markup and behaviour live in separate files:
 | 3D word drum | `src/components/direction-drum.tsx` | `src/lib/drum.ts` |
 | Practice (design and engineering) | `src/components/practice.tsx` | `src/lib/reveal.ts` |
 | Services and prices (home page, and also `/services/`) | `src/components/services.tsx` (page shell: `src/pages/services.tsx`) | (none) |
-| Languages, with the 3D model turning toward the mouse | `src/components/languages.tsx` | `src/lib/sketchfab-follow.ts` |
+| Languages, 3D icons: the nearest one turns to the mouse | `src/components/languages.tsx` | `src/lib/code-icons.ts` (three.js, loaded on demand) |
 | Gallery zoom into the film, closing wordmark | `src/components/ui/zoom-parallax.tsx`, `src/components/reel-finale.tsx` | (Framer Motion) |
 
 - `src/content/`: the words and data: drum entries, practice lists, brand logos, services and prices, languages, gallery images
