@@ -17,10 +17,9 @@ export type DrumOptions = {
   header?: HTMLElement | null // fades away as the drum starts turning
   count: number
   stepVh: number // scroll per row, in viewport heights
-  dealVh: number // extra scroll at the end
+  dealVh: number // extra scroll held on the last row
   angle: number // degrees between rows
   onActive: (index: number) => void
-  onDealt: (dealt: boolean) => void
 }
 
 const REACH = 5 // rows further than this from the centre are never visible
@@ -40,7 +39,6 @@ export function createDrum(o: DrumOptions): () => void {
   let lastPos = Number.NaN
   let lastHeader = -1
   let active = -1
-  let dealt = false
   const lastOpacity = o.rows.map(() => -1)
 
   const measure = () => {
@@ -105,12 +103,6 @@ export function createDrum(o: DrumOptions): () => void {
         o.header.style.visibility = h >= 1 ? 'hidden' : 'visible'
       }
     }
-
-    const nowDealt = s > drumDist + (dist - drumDist) * 0.2
-    if (nowDealt !== dealt) {
-      dealt = nowDealt
-      o.onDealt(nowDealt)
-    }
   }
 
   const refresh = () => {
@@ -131,14 +123,4 @@ export function createDrum(o: DrumOptions): () => void {
     window.removeEventListener('resize', refresh)
     document.fonts.removeEventListener('loadingdone', refresh)
   }
-}
-
-/** Pick `n` distinct indexes from `count`, in ascending order. */
-export function dealRandom(count: number, n: number): number[] {
-  const pool = Array.from({ length: count }, (_, i) => i)
-  for (let i = pool.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[pool[i], pool[j]] = [pool[j], pool[i]]
-  }
-  return pool.slice(0, n).sort((a, b) => a - b)
 }

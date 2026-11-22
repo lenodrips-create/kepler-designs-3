@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { Card } from '@/components/ui/card'
 import { directions } from '@/content/directions'
-import { createDrum, dealRandom } from '@/lib/drum'
-import { cn } from '@/lib/utils'
+import { createDrum } from '@/lib/drum'
 
 const STEP_VH = 24 // scroll per entry, in viewport heights
-const DEAL_VH = 60 // extra scroll at the end for the dealt cards
+const DEAL_VH = 25 // short hold on the last entry before the page moves on
 const ANGLE = 18 // degrees between rows on the drum
-const DEALT = 3
 
 const pad = (n: number) => String(n).padStart(2, '0')
 
@@ -19,8 +16,6 @@ export function DirectionDrum() {
   const drumRef = useRef<HTMLOListElement>(null)
 
   const [active, setActive] = useState(0)
-  const [dealt, setDealt] = useState(false)
-  const [picks, setPicks] = useState(() => dealRandom(count, DEALT))
 
   useEffect(() => {
     const track = trackRef.current
@@ -37,10 +32,6 @@ export function DirectionDrum() {
       dealVh: DEAL_VH,
       angle: ANGLE,
       onActive: setActive,
-      onDealt: (d) => {
-        if (d) setPicks(dealRandom(count, DEALT))
-        setDealt(d)
-      },
     })
   }, [count])
 
@@ -65,8 +56,7 @@ export function DirectionDrum() {
               id="directions-title"
               className="font-display text-3xl leading-[1.05] font-semibold tracking-[-0.03em] text-balance md:text-[2.75rem]"
             >
-              <span className="block">Fifteen directions.</span>
-              <span className="block">Three dealt per visit.</span>
+              Fifteen directions.
             </h2>
             <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
               Everything we make sits somewhere on this wheel. Keep scrolling to spin it.
@@ -107,49 +97,6 @@ export function DirectionDrum() {
                 </li>
               ))}
             </ol>
-          </div>
-
-          {/* the deal */}
-          <div className="absolute inset-x-0 top-[calc(50%+var(--band)+1.5rem)] flex flex-col items-center px-4">
-            <ul className="flex flex-wrap justify-center gap-2 md:gap-2.5">
-              {picks.map((p, n) => (
-                <li
-                  key={`${p}-${n}`}
-                  style={{ transitionDelay: dealt ? `${n * 90}ms` : '0ms' }}
-                  className={cn(
-                    'transition-[opacity,transform] duration-900 ease-[cubic-bezier(.16,1,.3,1)] motion-reduce:transition-none',
-                    dealt
-                      ? 'translate-y-0 rotate-0 opacity-100'
-                      : cn(
-                          'translate-y-6 opacity-0',
-                          n === 0 && '-rotate-[5deg]',
-                          n === 1 && 'rotate-2',
-                          n === 2 && 'rotate-[6deg]',
-                        ),
-                  )}
-                >
-                  <Card className="flex-row items-baseline gap-2 rounded-xl px-3 py-2 shadow-[0_10px_30px_-12px_rgb(75_50_32/0.22)] md:gap-3 md:px-5 md:py-3">
-                    <span className="text-xs font-semibold text-brand tabular-nums">{pad(p + 1)}</span>
-                    <span className="flex flex-col">
-                      <span className="text-sm font-semibold tracking-[-0.01em] md:text-base">
-                        {directions[p].title}
-                      </span>
-                      <span className="hidden text-sm text-muted-foreground md:block">
-                        {directions[p].subtitle}
-                      </span>
-                    </span>
-                  </Card>
-                </li>
-              ))}
-            </ul>
-            <p
-              className={cn(
-                'font-display mt-5 text-xl font-semibold tracking-[-0.03em] transition-[opacity,transform] delay-300 duration-900 ease-[cubic-bezier(.16,1,.3,1)] md:text-3xl',
-                dealt ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0',
-              )}
-            >
-              Three, dealt at random.
-            </p>
           </div>
 
           {/* counter + subtitle */}
