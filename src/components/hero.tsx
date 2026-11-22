@@ -102,7 +102,8 @@ export function Hero() {
           width={2000}
           height={1333}
           fetchPriority="high"
-          className="block h-[114%] w-full translate-y-[-7%] object-cover object-[60%_50%] will-change-transform"
+          style={{ transform: 'translate3d(0, -7%, 0)' }}
+          className="block h-[114%] w-full object-cover object-[60%_50%] will-change-transform"
         />
       </div>
 
