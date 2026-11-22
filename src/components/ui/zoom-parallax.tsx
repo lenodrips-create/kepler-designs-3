@@ -21,7 +21,7 @@ interface ZoomParallaxProps {
 	finale?: (progress: MotionValue<number>) => ReactNode;
 }
 
-/** Plays only while on screen, so it costs nothing elsewhere on the page. */
+/** Loads and plays only when it's near the screen, so it costs nothing elsewhere on the page. */
 function TileVideo({ mp4, webm, poster, label }: { mp4: string; webm?: string; poster: string; label: string }) {
 	const ref = useRef<HTMLVideoElement>(null);
 
@@ -51,8 +51,7 @@ function TileVideo({ mp4, webm, poster, label }: { mp4: string; webm?: string; p
 			muted
 			loop
 			playsInline
-			autoPlay
-			preload="metadata"
+			preload="none"
 			className="h-full w-full object-cover object-[42%_50%]"
 		>
 			<source src={mp4} type="video/mp4" />

@@ -1,6 +1,12 @@
 import reelPoster from '@/assets/reel-poster.jpg'
 import reelVideo from '@/assets/reel.mp4'
 import reelWebm from '@/assets/reel.webm'
+import aerialPoster from '@/assets/aerial-poster.jpg'
+import aerialVideo from '@/assets/aerial.mp4'
+import aerialWebm from '@/assets/aerial.webm'
+import trafficPoster from '@/assets/traffic-poster.jpg'
+import trafficVideo from '@/assets/traffic.mp4'
+import trafficWebm from '@/assets/traffic.webm'
 
 /* Tiles for the zoom parallax (max 7). The first one ends up filling the
    screen, so it holds the film: the gallery zooms straight into it. Swap the
@@ -13,12 +19,16 @@ export const parallaxImages = [
     alt: 'Night drive, lit through the car windows',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/bb/bbc200e370140ed6d4bc9dfd7b9de0957419ee0facd61f8698ed0e14281b13f5.jpg',
-    alt: 'Urban cityscape at sunset',
+    src: aerialPoster,
+    video: aerialVideo,
+    videoWebm: aerialWebm,
+    alt: 'A city at night, seen from above',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/96/9624bda260e246bd41ab7d26ac6d8e3ad427c62cb1bed10fe22f0aca7bd727c6.jpg',
-    alt: 'Abstract geometric pattern',
+    src: trafficPoster,
+    video: trafficVideo,
+    videoWebm: trafficWebm,
+    alt: 'Rain and traffic on a city road at night',
   },
   {
     src: 'https://cdn.21st.dev/assets/mirror/e0/e09b97c0849e748eb1d19a8d23e341835806a6a384540bfd4f7ce88f97b97b51.jpg',
