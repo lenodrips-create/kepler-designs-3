@@ -10,10 +10,12 @@ export function Brands() {
       >
         Brands that trust us
       </h2>
-      {/* full-bleed white band, edge to edge, as in the component demo */}
-      <InfiniteSlider gap={24} reverse className="mt-10 h-full w-full bg-white md:mt-14">
+      {/* Edge to edge on the page background. The demo logo files carry a lot
+          of empty space around each mark, so each image is drawn larger and
+          its empty top and bottom are trimmed by the band: the logos fill it. */}
+      <InfiniteSlider gap={8} reverse className="mt-10 h-full w-full bg-background md:mt-14">
         {brands.map((b) => (
-          <img key={b.src} src={b.src} alt={b.alt} className="h-20 w-auto md:h-[120px]" />
+          <img key={b.src} src={b.src} alt={b.alt} className="-my-8 h-32 w-auto md:-my-12 md:h-48" />
         ))}
       </InfiniteSlider>
     </section>
