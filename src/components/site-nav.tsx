@@ -15,14 +15,14 @@ const items: MenuItem[] = [
   {
     icon: <Layers className="h-5 w-5" />,
     label: 'Practice',
-    href: '#practice',
+    href: 'services/#practice', // on the services page now
     gradient: 'radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)',
     iconColor: 'group-hover:text-orange-500',
   },
   {
     icon: <Tag className="h-5 w-5" />,
     label: 'Services',
-    href: '#services',
+    href: 'services/',
     gradient: 'radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)',
     iconColor: 'group-hover:text-red-500',
   },

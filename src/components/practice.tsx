@@ -41,19 +41,21 @@ function Column({ label, items, offset }: { label: string; items: Capability[]; 
   )
 }
 
-export function Practice() {
+/* On the services page this heading is the page's main heading (h1). */
+export function Practice({ asPage = false }: { asPage?: boolean }) {
+  const Heading = asPage ? 'h1' : 'h2'
   const ref = useRef<HTMLElement>(null)
   useEffect(() => (ref.current ? observeReveal(ref.current) : undefined), [])
 
   return (
     <section id="practice" ref={ref} aria-labelledby="practice-title" className="px-6 pt-20 pb-20 md:px-14 md:pt-28 md:pb-28">
-      <h2
+      <Heading
         id="practice-title"
         data-reveal
         className="max-w-3xl font-display text-4xl leading-[1.02] font-semibold tracking-[-0.035em] text-balance md:text-6xl"
       >
         Designed and engineered in the same room.
-      </h2>
+      </Heading>
 
       <div className="mt-14 grid gap-14 md:mt-20 md:grid-cols-2">
         <Column label="Design" items={design} offset={0} />

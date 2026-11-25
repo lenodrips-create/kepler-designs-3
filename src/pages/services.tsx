@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 
+import { Practice } from '@/components/practice'
 import { Services } from '@/components/services'
 import { startSmoothScroll } from '@/lib/smooth-scroll'
 
@@ -21,7 +22,9 @@ export default function ServicesPage() {
       </header>
 
       <main>
-        <Services asPage />
+        {/* the same two sections that used to sit on the home page */}
+        <Practice asPage />
+        <Services />
       </main>
 
       <footer className="flex items-baseline justify-between border-t border-foreground/10 px-6 py-6 text-sm text-muted-foreground md:px-14">

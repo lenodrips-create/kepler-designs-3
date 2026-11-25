@@ -7,8 +7,6 @@ import { DirectionDrum } from '@/components/direction-drum'
 import { Hero } from '@/components/hero'
 import { Languages } from '@/components/languages'
 import { LoadingScreen } from '@/components/loading-screen'
-import { Practice } from '@/components/practice'
-import { Services } from '@/components/services'
 import { SiteNav } from '@/components/site-nav'
 import { ReelFinale } from '@/components/reel-finale'
 import { ZoomParallax } from '@/components/ui/zoom-parallax'
@@ -33,8 +31,6 @@ export default function App() {
 
         {/* slides up over the end of the drum, like the page over the hero */}
         <div className="relative z-10 -mt-[35vh] bg-background">
-          <Practice />
-          <Services />
           <Languages />
           <Brands />
         </div>
