@@ -41,7 +41,15 @@ export function ReelFinale({ progress }: { progress: MotionValue<number> }) {
           style={{ opacity: meta, y: metaY, pointerEvents: clickable }}
           className="flex items-baseline justify-between px-4 pb-3 text-sm text-white/70 md:px-6 md:pb-4 md:text-base"
         >
-          <p className="tabular-nums">© 2026</p>
+          <p className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <span className="tabular-nums">© 2026</span>
+            <a href="privacy/" className="transition-colors hover:text-white">
+              Privacy
+            </a>
+            <a href="terms/" className="transition-colors hover:text-white">
+              Terms
+            </a>
+          </p>
           <button
             type="button"
             onClick={scrollToTop}

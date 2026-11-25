@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 
 import { About } from '@/components/about'
 import { Brands } from '@/components/brands'
+import { CookieNotice } from '@/components/cookie-notice'
 import { DirectionDrum } from '@/components/direction-drum'
 import { Hero } from '@/components/hero'
 import { Languages } from '@/components/languages'
@@ -22,6 +23,7 @@ export default function App() {
   return (
     <>
       <LoadingScreen />
+      <CookieNotice />
       <SiteNav />
       <Hero />
       {/* z-10 + solid background so the page slides over the sinking hero */}

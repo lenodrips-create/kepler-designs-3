@@ -26,9 +26,17 @@ export default function ServicesPage() {
 
       <footer className="flex items-baseline justify-between border-t border-foreground/10 px-6 py-6 text-sm text-muted-foreground md:px-14">
         <p className="tabular-nums">© 2026 kepler designs</p>
-        <a href="../" className="transition-colors hover:text-foreground">
-          Home
-        </a>
+        <span className="flex gap-4">
+          <a href="../privacy/" className="transition-colors hover:text-foreground">
+            Privacy
+          </a>
+          <a href="../terms/" className="transition-colors hover:text-foreground">
+            Terms
+          </a>
+          <a href="../" className="transition-colors hover:text-foreground">
+            Home
+          </a>
+        </span>
       </footer>
     </div>
   )

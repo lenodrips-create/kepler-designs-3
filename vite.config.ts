@@ -8,12 +8,14 @@ export default defineConfig({
   // Relative asset paths so the build works at /kepler-designs-3/ on GitHub Pages
   base: './',
   plugins: [react(), tailwindcss()],
-  // Two pages: the home page and /services/
+  // Pages: home, /services/, /privacy/ and /terms/
   build: {
     rollupOptions: {
       input: {
         main: path.resolve(import.meta.dirname, 'index.html'),
         services: path.resolve(import.meta.dirname, 'services/index.html'),
+        privacy: path.resolve(import.meta.dirname, 'privacy/index.html'),
+        terms: path.resolve(import.meta.dirname, 'terms/index.html'),
       },
     },
   },
