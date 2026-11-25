@@ -2,8 +2,8 @@ import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { brands } from '@/content/brands'
 
 // One pass of the strip has to be wider than the widest screen, or the loop
-// shows a gap after the last logo. Six logos aren't enough, so repeat them.
-const REPEAT = 4
+// shows a gap. With a single brand, repeat it enough to cover a 2560px screen.
+const REPEAT = 8
 
 export function Brands() {
   const strip = Array.from({ length: REPEAT }, () => brands).flat()
@@ -16,22 +16,23 @@ export function Brands() {
       >
         Brands that trust us
       </h2>
-      {/* Edge to edge on the page background. The logos multiply into the
-          cream, so the white boxes some logo files have disappear. The track
-          gets the same background so the blend has something to mix with. */}
-      <InfiniteSlider
-        gap={8}
-        reverse
-        className="mt-10 h-full w-full bg-background md:mt-14 [&>div]:bg-background"
-      >
+      {/* edge to edge, looping forever; the marks are drawn in the page's ink */}
+      <InfiniteSlider gap={72} duration={40} reverse className="mt-10 w-full py-4 md:mt-14 md:py-6">
         {strip.map((b, i) => (
-          <img
-            key={`${b.src}-${i}`}
-            src={b.src}
-            alt={i < brands.length ? b.alt : ''}
+          <div
+            key={`${b.name}-${i}`}
             aria-hidden={i < brands.length ? undefined : true}
-            className="-my-8 h-32 w-auto mix-blend-multiply md:-my-12 md:h-48"
-          />
+            className="flex shrink-0 items-center gap-4 text-foreground md:gap-5"
+          >
+            <span
+              aria-hidden="true"
+              className="block h-14 w-auto md:h-20 [&>svg]:h-full [&>svg]:w-auto"
+              dangerouslySetInnerHTML={{ __html: b.logo }}
+            />
+            <span className="font-display text-4xl font-semibold tracking-[-0.03em] whitespace-nowrap md:text-6xl">
+              {b.name}
+            </span>
+          </div>
         ))}
       </InfiniteSlider>
     </section>

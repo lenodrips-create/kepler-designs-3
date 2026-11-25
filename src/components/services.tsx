@@ -1,6 +1,6 @@
 import { useEffect, useRef, type CSSProperties } from 'react'
 
-import { CONTACT_EMAIL, CURRENCY, individual, packages, terms, type Service } from '@/content/services'
+import { CONTACT_EMAIL, CURRENCY, packages, terms } from '@/content/services'
 import { observeReveal } from '@/lib/reveal'
 
 const stagger = (i: number) => ({ '--i': i }) as CSSProperties
@@ -15,36 +15,6 @@ function Price({ amount, from, per, large }: { amount: number; from?: boolean; p
       </span>
       {per ? <span className="ml-1 text-sm text-muted-foreground md:text-base">/ {per}</span> : null}
     </span>
-  )
-}
-
-function PriceList({ title, items, offset }: { title: string; items: Service[]; offset: number }) {
-  return (
-    <section aria-labelledby={`${title}-title`} className="px-6 md:px-14">
-      <h2
-        id={`${title}-title`}
-        data-reveal
-        className="font-display text-3xl font-semibold tracking-[-0.03em] md:text-5xl"
-      >
-        {title}
-      </h2>
-      <ul className="mt-8 border-t border-foreground/20 md:mt-10">
-        {items.map((s, i) => (
-          <li
-            key={s.name}
-            data-reveal
-            style={stagger(offset + i)}
-            className="grid gap-x-8 gap-y-1 border-b border-foreground/10 py-5 md:grid-cols-[1fr_1.2fr_auto] md:items-baseline md:py-6"
-          >
-            <h3 className="font-display text-xl font-semibold tracking-[-0.02em] md:text-2xl">{s.name}</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground md:text-base">{s.detail}</p>
-            <p className="mt-2 md:mt-0 md:text-right">
-              <Price amount={s.price} from={s.from} per={s.per} />
-            </p>
-          </li>
-        ))}
-      </ul>
-    </section>
   )
 }
 
@@ -105,9 +75,6 @@ export function Services({ asPage = false }: { asPage?: boolean }) {
           </div>
         </section>
 
-        <div className="mt-20 md:mt-28">
-          <PriceList title="Individual services" items={individual} offset={0} />
-        </div>
 
         {/* how pricing works */}
         <section aria-labelledby="terms-title" className="px-6 pt-20 pb-20 md:px-14 md:pt-28 md:pb-28">

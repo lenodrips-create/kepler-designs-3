@@ -58,16 +58,6 @@ export const packages: Package[] = [
   },
 ]
 
-export type Service = { name: string; detail: string; price: number; from?: boolean; per?: string }
-
-export const individual: Service[] = [
-  { name: 'Brand identity', detail: 'Logo, type, colour and a usage guide', price: 1200, from: true },
-  { name: 'Design system', detail: 'Tokens and components, in Figma and in code', price: 1800, from: true },
-  { name: 'Prototype', detail: 'A working prototype in code to test an idea with real users', price: 1000, from: true },
-  { name: 'Motion design', detail: 'Interaction and scroll motion for an existing site', price: 600, from: true },
-  { name: 'Performance and accessibility audit', detail: 'A written report with fixes, ranked by impact', price: 450 },
-]
-
 export const terms: { title: string; detail: string }[] = [
   { title: 'Fixed quotes', detail: 'You get a fixed price after a free 30-minute call. It only changes if the scope does.' },
   { title: 'Simple payment', detail: 'Half to start, half at launch. Larger projects are split into milestones.' },
