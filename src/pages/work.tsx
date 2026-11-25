@@ -3,7 +3,8 @@ import { useEffect, useRef } from 'react'
 import { jobs, type Job } from '@/content/work'
 import { observeReveal } from '@/lib/reveal'
 import { SiteNav } from '@/components/site-nav'
-import { startSmoothScroll } from '@/lib/smooth-scroll'
+import { SiteFooter } from '@/components/site-footer'
+import { glideToHash, startSmoothScroll } from '@/lib/smooth-scroll'
 
 const pad = (n: number) => String(n).padStart(2, '0')
 
@@ -63,6 +64,7 @@ function JobEntry({ job, n }: { job: Job; n: number }) {
 export default function WorkPage() {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => startSmoothScroll(), [])
+  useEffect(() => glideToHash(), [])
   useEffect(() => (ref.current ? observeReveal(ref.current) : undefined), [])
 
   return (
@@ -88,20 +90,7 @@ export default function WorkPage() {
         </div>
       </main>
 
-      <footer className="flex items-baseline justify-between border-t border-foreground/10 px-6 py-6 text-sm text-muted-foreground md:px-14">
-        <p className="tabular-nums">© 2026 kepler designs</p>
-        <span className="flex gap-4">
-          <a href="../privacy/" className="transition-colors hover:text-foreground">
-            Privacy
-          </a>
-          <a href="../terms/" className="transition-colors hover:text-foreground">
-            Terms
-          </a>
-          <a href="../" className="transition-colors hover:text-foreground">
-            Home
-          </a>
-        </span>
-      </footer>
+      <SiteFooter base="../" />
     </div>
   )
 }

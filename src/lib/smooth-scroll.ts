@@ -55,6 +55,14 @@ export function scrollToId(id: string, offset = 0): void {
   else el.scrollIntoView()
 }
 
+/** If the address names a section (e.g. #clients), glide to it once laid out. */
+export function glideToHash(offset = 88): () => void {
+  const id = window.location.hash.slice(1)
+  if (!id) return () => {}
+  const t = window.setTimeout(() => scrollToId(id, offset), 400)
+  return () => window.clearTimeout(t)
+}
+
 /** Subscribe to the page scroll. Called once right away, then every frame the page moves. */
 export function onScroll(listener: Listener): () => void {
   listeners.add(listener)

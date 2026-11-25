@@ -16,6 +16,7 @@ export function About() {
 
   return (
     <section
+      id="about"
       aria-labelledby="about-title"
       className="grid gap-4 px-6 pt-16 pb-8 md:grid-cols-12 md:gap-8 md:px-14 md:pt-24 md:pb-12"
     >

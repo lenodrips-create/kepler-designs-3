@@ -7,25 +7,18 @@ import { DirectionDrum } from '@/components/direction-drum'
 import { Hero } from '@/components/hero'
 import { Languages } from '@/components/languages'
 import { LoadingScreen } from '@/components/loading-screen'
+import { SiteFooter } from '@/components/site-footer'
 import { SiteNav } from '@/components/site-nav'
-import { ReelFinale } from '@/components/reel-finale'
 import { ZoomParallax } from '@/components/ui/zoom-parallax'
 import { parallaxImages } from '@/content/parallax-images'
-import { scrollToId, startSmoothScroll } from '@/lib/smooth-scroll'
+import { glideToHash, startSmoothScroll } from '@/lib/smooth-scroll'
 import { cn } from '@/lib/utils'
 
 export default function App() {
   // One Lenis instance for the whole page (the zoom parallax reads it too).
   useEffect(() => startSmoothScroll(), [])
 
-  // Arriving from another page with a section in the address (e.g. /#clients):
-  // glide there once the page has laid out.
-  useEffect(() => {
-    const id = window.location.hash.slice(1)
-    if (!id) return
-    const t = window.setTimeout(() => scrollToId(id, 88), 400)
-    return () => window.clearTimeout(t)
-  }, [])
+  useEffect(() => glideToHash(), [])
 
   return (
     <>
@@ -56,14 +49,10 @@ export default function App() {
               )}
             />
           </div>
-          {/* zooms into the film, holds it full-screen, and closes the page on it */}
-          <ZoomParallax
-            images={parallaxImages}
-            hold={90}
-            finale={(progress) => <ReelFinale progress={progress} />}
-          />
+          <ZoomParallax images={parallaxImages} />
         </section>
       </main>
+      <SiteFooter />
     </>
   )
 }

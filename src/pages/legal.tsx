@@ -2,7 +2,8 @@ import { useEffect } from 'react'
 
 import { CONTACT_EMAIL } from '@/content/services'
 import { BUSINESS, LOCATION, UPDATED, privacy, terms, type LegalSection } from '@/content/legal'
-import { startSmoothScroll } from '@/lib/smooth-scroll'
+import { SiteFooter } from '@/components/site-footer'
+import { glideToHash, startSmoothScroll } from '@/lib/smooth-scroll'
 
 const pages = {
   privacy: { title: 'Privacy policy', sections: privacy, other: { href: '../terms/', label: 'Terms and conditions' } },
@@ -30,6 +31,7 @@ function Section({ s }: { s: LegalSection }) {
 export default function LegalPage({ page }: { page: LegalPageKey }) {
   const { title, sections, other } = pages[page]
   useEffect(() => startSmoothScroll(), [])
+  useEffect(() => glideToHash(), [])
   useEffect(() => {
     document.title = `${title} · ${BUSINESS}`
   }, [title])
@@ -78,12 +80,7 @@ export default function LegalPage({ page }: { page: LegalPageKey }) {
         </a>
       </main>
 
-      <footer className="flex items-baseline justify-between border-t border-foreground/10 px-6 py-6 text-sm text-muted-foreground md:px-14">
-        <p className="tabular-nums">© 2026 kepler designs</p>
-        <a href="../" className="transition-colors hover:text-foreground">
-          Home
-        </a>
-      </footer>
+      <SiteFooter base="../" />
     </div>
   )
 }
