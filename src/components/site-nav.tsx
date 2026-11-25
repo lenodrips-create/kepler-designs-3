@@ -36,7 +36,7 @@ const items: MenuItem[] = [
   {
     icon: <Clapperboard className="h-5 w-5" />,
     label: 'Work',
-    href: '#work',
+    href: 'work/', // its own page, not the videos
     gradient: 'radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(147,51,234,0.06) 50%, rgba(126,34,206,0) 100%)',
     iconColor: 'group-hover:text-purple-500',
   },
@@ -64,7 +64,8 @@ export function SiteNav() {
         }
         onSelect={(href) => {
           if (href === '#top') scrollToTop()
-          else scrollToId(href.slice(1), 88)
+          else if (href.startsWith('#')) scrollToId(href.slice(1), 88)
+          else window.location.href = href
         }}
       />
     </div>

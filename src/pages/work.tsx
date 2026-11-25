@@ -1,0 +1,115 @@
+import { useEffect, useRef } from 'react'
+
+import { jobs, type Job } from '@/content/work'
+import { observeReveal } from '@/lib/reveal'
+import { startSmoothScroll } from '@/lib/smooth-scroll'
+
+const pad = (n: number) => String(n).padStart(2, '0')
+
+function Detail({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="grid gap-2 border-t border-foreground/10 py-5 sm:grid-cols-[11rem_1fr] sm:gap-6">
+      <h3 className="text-sm font-medium text-muted-foreground">{label}</h3>
+      <div className="text-base leading-relaxed">{children}</div>
+    </div>
+  )
+}
+
+function JobEntry({ job, n }: { job: Job; n: number }) {
+  return (
+    <article data-reveal className="grid gap-8 border-t border-foreground/20 py-10 md:grid-cols-12 md:gap-14 md:py-14">
+      <div className="md:col-span-5">
+        <p className="flex items-baseline gap-3 text-sm text-muted-foreground tabular-nums">
+          <span className="font-medium text-brand-text">{pad(n)}</span>
+          <span>{job.year}</span>
+        </p>
+        <h2 className="mt-3 font-display text-3xl leading-[1.05] font-semibold tracking-[-0.03em] text-balance md:text-5xl">
+          {job.title}
+        </h2>
+        <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">{job.summary}</p>
+      </div>
+
+      <div className="md:col-span-7">
+        <Detail label="Service">{job.service}</Detail>
+        <Detail label="What we did">
+          <ul className="space-y-2">
+            {job.steps.map((s) => (
+              <li key={s} className="grid grid-cols-[1.25rem_1fr]">
+                <span aria-hidden="true" className="text-brand-text">
+                  –
+                </span>
+                {s}
+              </li>
+            ))}
+          </ul>
+        </Detail>
+        <Detail label="Languages and tools">
+          <ul className="flex flex-wrap gap-2">
+            {job.languages.map((l) => (
+              <li key={l} className="rounded-full border border-foreground/15 px-3 py-1 text-sm">
+                {l}
+              </li>
+            ))}
+          </ul>
+        </Detail>
+        <Detail label="Result">{job.result}</Detail>
+      </div>
+    </article>
+  )
+}
+
+/* Recent work: a running list of jobs, newest first (src/content/work.ts). */
+export default function WorkPage() {
+  const ref = useRef<HTMLDivElement>(null)
+  useEffect(() => startSmoothScroll(), [])
+  useEffect(() => (ref.current ? observeReveal(ref.current) : undefined), [])
+
+  return (
+    <div ref={ref} className="min-h-svh bg-background">
+      <header className="flex items-baseline justify-between px-6 py-5 md:px-14 md:py-7">
+        <a href="../" className="font-display text-xl font-semibold tracking-[-0.03em] md:text-2xl">
+          kepler designs
+        </a>
+        <a href="../" className="group text-sm text-muted-foreground transition-colors hover:text-foreground md:text-base">
+          <span aria-hidden="true" className="mr-1.5 inline-block transition-transform duration-300 group-hover:-translate-x-0.5">
+            ←
+          </span>
+          Home
+        </a>
+      </header>
+
+      <main className="px-6 pt-10 pb-20 md:px-14 md:pt-16 md:pb-28">
+        <h1
+          data-reveal
+          className="font-display text-5xl leading-[0.95] font-semibold tracking-[-0.045em] text-balance md:text-8xl"
+        >
+          Recent work
+        </h1>
+        <p data-reveal className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          The jobs we’ve done lately, newest first, with what went into each one.
+        </p>
+
+        <div className="mt-14 md:mt-20">
+          {jobs.map((job, i) => (
+            <JobEntry key={job.title} job={job} n={jobs.length - i} />
+          ))}
+        </div>
+      </main>
+
+      <footer className="flex items-baseline justify-between border-t border-foreground/10 px-6 py-6 text-sm text-muted-foreground md:px-14">
+        <p className="tabular-nums">© 2026 kepler designs</p>
+        <span className="flex gap-4">
+          <a href="../privacy/" className="transition-colors hover:text-foreground">
+            Privacy
+          </a>
+          <a href="../terms/" className="transition-colors hover:text-foreground">
+            Terms
+          </a>
+          <a href="../" className="transition-colors hover:text-foreground">
+            Home
+          </a>
+        </span>
+      </footer>
+    </div>
+  )
+}
