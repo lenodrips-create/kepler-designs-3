@@ -3,7 +3,7 @@ import { brands } from '@/content/brands'
 
 // One pass of the strip has to be wider than the widest screen, or the loop
 // shows a gap. Repeat the brands enough to cover a 2560px screen.
-const REPEAT = 4
+const REPEAT = 3
 
 export function Brands() {
   const strip = Array.from({ length: REPEAT }, () => brands).flat()
@@ -34,6 +34,14 @@ export function Brands() {
                 decoding="async"
                 className="size-14 shrink-0 rounded-full object-cover md:size-20"
               />
+            ) : b.logoOnly ? (
+              // a wordmark: sized so its capitals match the other names
+              <span
+                role="img"
+                aria-label={b.name}
+                className="block h-11 w-auto md:h-[4.25rem] [&>svg]:h-full [&>svg]:w-auto"
+                dangerouslySetInnerHTML={{ __html: b.logo ?? '' }}
+              />
             ) : (
               <span
                 aria-hidden="true"
@@ -41,9 +49,11 @@ export function Brands() {
                 dangerouslySetInnerHTML={{ __html: b.logo ?? '' }}
               />
             )}
-            <span className="font-display text-4xl font-semibold tracking-[-0.03em] whitespace-nowrap md:text-6xl">
-              {b.name}
-            </span>
+            {b.logoOnly ? null : (
+              <span className="font-display text-4xl font-semibold tracking-[-0.03em] whitespace-nowrap md:text-6xl">
+                {b.name}
+              </span>
+            )}
           </div>
         ))}
       </InfiniteSlider>
