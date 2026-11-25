@@ -6,6 +6,10 @@ export const CURRENCY = 'USD'
 /** Leave empty to hide the "Start a project" link until you add an address. */
 export const CONTACT_EMAIL = ''
 
+/** Shown on the Contact button and in the footer. */
+export const CONTACT_PHONE = '717 494 3284'
+export const CONTACT_PHONE_HREF = 'tel:+17174943284'
+
 export type Package = {
   name: string
   from: number

@@ -29,7 +29,7 @@ const items: MenuItem[] = [
   {
     icon: <Briefcase className="h-5 w-5" />,
     label: 'Clients',
-    href: '#clients',
+    href: 'clients/',
     gradient: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)',
     iconColor: 'group-hover:text-green-500',
   },
@@ -42,7 +42,7 @@ const items: MenuItem[] = [
   },
 ]
 
-export type NavPage = 'home' | 'services' | 'work'
+export type NavPage = 'home' | 'services' | 'work' | 'clients' | 'other'
 
 /* Turn a link written for the home page into the right one for `page`.
    On the page it points to, it becomes an in-page jump. */

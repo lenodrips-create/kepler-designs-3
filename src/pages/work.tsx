@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 
 import { jobs, type Job } from '@/content/work'
 import { observeReveal } from '@/lib/reveal'
+import { ContactButton } from '@/components/contact-button'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { glideToHash, startSmoothScroll } from '@/lib/smooth-scroll'
@@ -70,6 +71,7 @@ export default function WorkPage() {
   return (
     <div ref={ref} className="min-h-svh bg-background">
       <SiteNav page="work" />
+      <ContactButton />
       <div id="top" className="h-20 md:h-24" aria-hidden="true" />
 
       <main className="px-6 pt-10 pb-20 md:px-14 md:pt-16 md:pb-28">

@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
 
-import { CONTACT_EMAIL } from '@/content/services'
+import { CONTACT_EMAIL, CONTACT_PHONE } from '@/content/services'
 import { BUSINESS, LOCATION, UPDATED, privacy, terms, type LegalSection } from '@/content/legal'
+import { ContactButton } from '@/components/contact-button'
 import { SiteFooter } from '@/components/site-footer'
+import { SiteNav } from '@/components/site-nav'
 import { glideToHash, startSmoothScroll } from '@/lib/smooth-scroll'
 
 const pages = {
@@ -38,17 +40,9 @@ export default function LegalPage({ page }: { page: LegalPageKey }) {
 
   return (
     <div className="min-h-svh bg-background">
-      <header className="flex items-baseline justify-between px-6 py-5 md:px-14 md:py-7">
-        <a href="../" className="font-display text-xl font-semibold tracking-[-0.03em] md:text-2xl">
-          kepler designs
-        </a>
-        <a href="../" className="group text-sm text-muted-foreground transition-colors hover:text-foreground md:text-base">
-          <span aria-hidden="true" className="mr-1.5 inline-block transition-transform duration-300 group-hover:-translate-x-0.5">
-            ←
-          </span>
-          Home
-        </a>
-      </header>
+      <ContactButton />
+      <SiteNav page="other" />
+      <div id="top" className="h-20 md:h-24" aria-hidden="true" />
 
       <main className="px-6 pt-10 pb-20 md:px-14 md:pt-16 md:pb-28">
         <h1 className="font-display text-5xl leading-[0.95] font-semibold tracking-[-0.045em] text-balance md:text-8xl">
@@ -66,7 +60,7 @@ export default function LegalPage({ page }: { page: LegalPageKey }) {
               body: [
                 CONTACT_EMAIL
                   ? `Questions? Email ${CONTACT_EMAIL} and we’ll get back to you.`
-                  : `Questions? Get in touch with ${BUSINESS} in ${LOCATION}.`,
+                  : `Questions? Call ${BUSINESS} at ${CONTACT_PHONE}. We’re in ${LOCATION}.`,
               ],
             }}
           />

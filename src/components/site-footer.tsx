@@ -1,5 +1,5 @@
 import logo from '@/assets/logo.svg'
-import { CONTACT_EMAIL } from '@/content/services'
+import { CONTACT_PHONE, CONTACT_PHONE_HREF } from '@/content/services'
 import { cn } from '@/lib/utils'
 
 /* Links written relative to the home page; `base` is '' on the home page and
@@ -21,7 +21,7 @@ const columns = [
       ['Pricing', 'services/#packages-title'],
       ['How it works', 'services/#terms-title'],
       ['About', '#about'],
-      ['Clients', '#clients'],
+      ['Clients', 'clients/'],
     ],
   },
   {
@@ -38,28 +38,19 @@ const columns = [
 
 export function SiteFooter({ base = '' }: { base?: string }) {
   const to = (href: string) => (href.startsWith('#') ? (base ? base + href : href) : base + href)
-  const consult = CONTACT_EMAIL ? `mailto:${CONTACT_EMAIL}?subject=Free%20consult` : to('services/#terms-title')
 
   return (
-    <footer className="relative z-10 bg-foreground px-6 pt-16 pb-8 text-background md:px-14 md:pt-24">
+    <footer className="relative z-10 bg-foreground px-6 pt-6 pb-8 text-background md:px-14 md:pt-10">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col gap-6 border-b border-background/15 pb-12 sm:flex-row sm:items-center sm:justify-between md:pb-16">
-          <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] md:text-5xl">Ready to get started?</h2>
-          <a
-            href={consult}
-            className="group inline-flex w-fit items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white transition-transform duration-200 hover:scale-[1.03] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background md:text-base"
-          >
-            Book a free consult
-            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">
-              →
-            </span>
-          </a>
-        </div>
-
         <div className="grid gap-12 py-12 md:grid-cols-12 md:gap-8 md:py-16">
-          <a href={base || '#top'} aria-label="kepler designs, home" className="w-fit md:col-span-5">
-            <img src={logo} alt="" width={1137} height={831} className="h-20 w-auto md:h-28" />
-          </a>
+          <div className="md:col-span-5">
+            <a href={base || '#top'} aria-label="kepler designs, home" className="block w-fit">
+              <img src={logo} alt="" width={1137} height={831} className="h-20 w-auto md:h-28" />
+            </a>
+            <a href={CONTACT_PHONE_HREF} className="mt-8 inline-block font-display text-2xl font-semibold tracking-[-0.02em] tabular-nums hover:underline md:text-3xl">
+              {CONTACT_PHONE}
+            </a>
+          </div>
           {columns.map((col) => (
             <nav key={col.title} aria-label={col.title} className="md:col-span-2 md:last:col-span-3">
               <h3 className="text-xs font-medium tracking-[0.2em] text-background/55 uppercase">{col.title}</h3>

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 
 import { Practice } from '@/components/practice'
 import { Services } from '@/components/services'
+import { ContactButton } from '@/components/contact-button'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { glideToHash, startSmoothScroll } from '@/lib/smooth-scroll'
@@ -13,6 +14,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-svh bg-background">
       <SiteNav page="services" />
+      <ContactButton />
       <div id="top" className="h-20 md:h-24" aria-hidden="true" />
 
       <main>

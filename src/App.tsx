@@ -8,6 +8,7 @@ import { Hero } from '@/components/hero'
 import { Languages } from '@/components/languages'
 import { LoadingScreen } from '@/components/loading-screen'
 import { SiteFooter } from '@/components/site-footer'
+import { ContactButton } from '@/components/contact-button'
 import { SiteNav } from '@/components/site-nav'
 import { ZoomParallax } from '@/components/ui/zoom-parallax'
 import { parallaxImages } from '@/content/parallax-images'
@@ -25,6 +26,7 @@ export default function App() {
       <LoadingScreen />
       <CookieNotice />
       <SiteNav />
+      <ContactButton />
       <Hero />
       {/* z-10 + solid background so the page slides over the sinking hero */}
       <main className="relative z-10 bg-background pt-6 md:pt-10">
