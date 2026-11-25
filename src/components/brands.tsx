@@ -2,8 +2,8 @@ import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { brands } from '@/content/brands'
 
 // One pass of the strip has to be wider than the widest screen, or the loop
-// shows a gap. With a single brand, repeat it enough to cover a 2560px screen.
-const REPEAT = 8
+// shows a gap. Repeat the brands enough to cover a 2560px screen.
+const REPEAT = 4
 
 export function Brands() {
   const strip = Array.from({ length: REPEAT }, () => brands).flat()
@@ -24,11 +24,23 @@ export function Brands() {
             aria-hidden={i < brands.length ? undefined : true}
             className="flex shrink-0 items-center gap-4 text-foreground md:gap-5"
           >
-            <span
-              aria-hidden="true"
-              className="block h-14 w-auto md:h-20 [&>svg]:h-full [&>svg]:w-auto"
-              dangerouslySetInnerHTML={{ __html: b.logo }}
-            />
+            {b.photo ? (
+              <img
+                src={b.photo}
+                alt=""
+                width={320}
+                height={320}
+                loading="lazy"
+                decoding="async"
+                className="size-14 shrink-0 rounded-full object-cover md:size-20"
+              />
+            ) : (
+              <span
+                aria-hidden="true"
+                className="block h-14 w-auto md:h-20 [&>svg]:h-full [&>svg]:w-auto"
+                dangerouslySetInnerHTML={{ __html: b.logo ?? '' }}
+              />
+            )}
             <span className="font-display text-4xl font-semibold tracking-[-0.03em] whitespace-nowrap md:text-6xl">
               {b.name}
             </span>
