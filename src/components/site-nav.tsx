@@ -15,7 +15,7 @@ const items: MenuItem[] = [
   {
     icon: <Layers className="h-5 w-5" />,
     label: 'Practice',
-    href: 'services/#practice', // on the services page now
+    href: 'practice/',
     gradient: 'radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)',
     iconColor: 'group-hover:text-orange-500',
   },
@@ -36,13 +36,13 @@ const items: MenuItem[] = [
   {
     icon: <Clapperboard className="h-5 w-5" />,
     label: 'Work',
-    href: 'work/', // its own page, not the videos
+    href: 'work/',
     gradient: 'radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(147,51,234,0.06) 50%, rgba(126,34,206,0) 100%)',
     iconColor: 'group-hover:text-purple-500',
   },
 ]
 
-export type NavPage = 'home' | 'services' | 'work' | 'clients' | 'other'
+export type NavPage = 'home' | 'services' | 'work' | 'clients' | 'practice' | 'other'
 
 /* Turn a link written for the home page into the right one for `page`.
    On the page it points to, it becomes an in-page jump. */

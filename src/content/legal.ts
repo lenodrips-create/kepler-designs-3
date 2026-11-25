@@ -1,7 +1,7 @@
 /* Privacy policy and terms. Written to match what the site actually does
    (checked Nov 2026): no cookies, no analytics, no ads, no forms; one item
-   in browser storage; hosted on GitHub Pages; four gallery photos load from
-   cdn.21st.dev. If any of that changes, update these words too.
+   in browser storage; hosted on GitHub Pages; nothing loads from other
+   servers. If any of that changes, update these words too.
    This is a plain-language starting point, not legal advice. */
 
 export const UPDATED = 'November 25, 2026'
@@ -43,7 +43,7 @@ export const privacy: LegalSection[] = [
   {
     heading: 'Content from other services',
     body: [
-      'Some gallery images are loaded from cdn.21st.dev. When your browser requests them, that service receives your IP address and basic browser information, as any web server would. Everything else, including the fonts, 3D models and videos, is served from our own site.',
+      'Nothing on this site loads from other services. The fonts, images, logos and 3D models are all served from our own site, so no other company receives your visit.',
     ],
   },
   {
@@ -78,7 +78,7 @@ export const terms: LegalSection[] = [
   {
     heading: 'Our work and content',
     body: [
-      `The design, code, text, video and images on this site belong to ${BUSINESS} or are used with permission. You are welcome to view and share links to the site, but please do not copy, republish or sell its content without our written permission.`,
+      `The design, code, text and images on this site belong to ${BUSINESS} or are used with permission. You are welcome to view and share links to the site, but please do not copy, republish or sell its content without our written permission.`,
       'Client names and logos shown on this site belong to their owners and appear to show work we have done with them.',
     ],
   },

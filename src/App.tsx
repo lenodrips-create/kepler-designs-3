@@ -10,13 +10,10 @@ import { LoadingScreen } from '@/components/loading-screen'
 import { SiteFooter } from '@/components/site-footer'
 import { ContactButton } from '@/components/contact-button'
 import { SiteNav } from '@/components/site-nav'
-import { ZoomParallax } from '@/components/ui/zoom-parallax'
-import { parallaxImages } from '@/content/parallax-images'
 import { glideToHash, startSmoothScroll } from '@/lib/smooth-scroll'
-import { cn } from '@/lib/utils'
 
 export default function App() {
-  // One Lenis instance for the whole page (the zoom parallax reads it too).
+  // One Lenis instance for the whole page.
   useEffect(() => startSmoothScroll(), [])
 
   useEffect(() => glideToHash(), [])
@@ -39,20 +36,6 @@ export default function App() {
           <Brands />
         </div>
 
-        <section id="work" aria-label="Gallery" className="relative w-full overflow-x-clip">
-          <div className="relative flex h-0 items-center justify-center">
-            {/* Radial spotlight */}
-            <div
-              aria-hidden="true"
-              className={cn(
-                'pointer-events-none absolute -top-1/2 left-1/2 h-[120vmin] w-[120vmin] -translate-x-1/2 rounded-full',
-                'bg-[radial-gradient(ellipse_at_center,--theme(--color-foreground/.1),transparent_50%)]',
-                'blur-[30px]',
-              )}
-            />
-          </div>
-          <ZoomParallax images={parallaxImages} />
-        </section>
       </main>
       <SiteFooter />
     </>

@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 
-import { Practice } from '@/components/practice'
 import { Services } from '@/components/services'
 import { ContactButton } from '@/components/contact-button'
 import { SiteNav } from '@/components/site-nav'
@@ -18,9 +17,7 @@ export default function ServicesPage() {
       <div id="top" className="h-20 md:h-24" aria-hidden="true" />
 
       <main>
-        {/* the same two sections that used to sit on the home page */}
-        <Practice asPage />
-        <Services />
+        <Services asPage />
       </main>
 
       <SiteFooter base="../" />
