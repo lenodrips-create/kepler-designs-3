@@ -14,6 +14,21 @@ export type Job = {
 
 export const jobs: Job[] = [
   {
+    title: 'Installing Linux, with instructions',
+    year: '2026',
+    service: 'Setup and training',
+    summary:
+      'A client wanted to move a computer to Linux and be able to look after it themselves afterwards.',
+    steps: [
+      'Backed up their files before touching anything',
+      'Installed Linux (Ubuntu) and set it up alongside the drivers, Wi-Fi and printer',
+      'Moved their files and set up the apps they use every day',
+      'Wrote step-by-step instructions for updates, installing apps and everyday fixes',
+    ],
+    languages: ['Linux (Ubuntu)', 'Bash', 'Terminal', 'apt'],
+    result: 'A fast, working Linux computer, and written instructions so they can run it on their own.',
+  },
+  {
     title: 'Fixing a computer password error',
     year: '2026',
     service: 'Tech support',

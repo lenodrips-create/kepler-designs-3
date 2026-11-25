@@ -11,12 +11,21 @@ import { SiteNav } from '@/components/site-nav'
 import { ReelFinale } from '@/components/reel-finale'
 import { ZoomParallax } from '@/components/ui/zoom-parallax'
 import { parallaxImages } from '@/content/parallax-images'
-import { startSmoothScroll } from '@/lib/smooth-scroll'
+import { scrollToId, startSmoothScroll } from '@/lib/smooth-scroll'
 import { cn } from '@/lib/utils'
 
 export default function App() {
   // One Lenis instance for the whole page (the zoom parallax reads it too).
   useEffect(() => startSmoothScroll(), [])
+
+  // Arriving from another page with a section in the address (e.g. /#clients):
+  // glide there once the page has laid out.
+  useEffect(() => {
+    const id = window.location.hash.slice(1)
+    if (!id) return
+    const t = window.setTimeout(() => scrollToId(id, 88), 400)
+    return () => window.clearTimeout(t)
+  }, [])
 
   return (
     <>

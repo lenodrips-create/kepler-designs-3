@@ -42,18 +42,33 @@ const items: MenuItem[] = [
   },
 ]
 
-/* The glow menu, floating at the top centre of the screen. */
-export function SiteNav() {
+export type NavPage = 'home' | 'services' | 'work'
+
+/* Turn a link written for the home page into the right one for `page`.
+   On the page it points to, it becomes an in-page jump. */
+function resolve(href: string, page: NavPage): string {
+  if (page === 'home') return href
+  if (href === '#top') return '../'
+  if (href.startsWith('#')) return '../' + href // e.g. ../#clients
+  const [path, hash] = href.split('#') // e.g. services/ , practice
+  if (path === `${page}/`) return hash ? `#${hash}` : '#top'
+  return '../' + href
+}
+
+/* The glow menu, floating at the top centre of the screen, on every page. */
+export function SiteNav({ page = 'home' }: { page?: NavPage }) {
+  const links = items.map((it) => ({ ...it, href: resolve(it.href, page) }))
   return (
     <div className="pointer-events-none fixed inset-x-0 top-3 z-50 flex justify-center px-3 md:top-5">
       <MenuBar
-        items={items}
+        items={links}
         className="pointer-events-auto"
         leading={
           <a
-            href="#top"
-            aria-label="kepler designs, back to top"
+            href={page === 'home' ? '#top' : '../'}
+            aria-label={page === 'home' ? 'kepler designs, back to top' : 'kepler designs, home'}
             onClick={(e) => {
+              if (page !== 'home') return
               e.preventDefault()
               scrollToTop()
             }}

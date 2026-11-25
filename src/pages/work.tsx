@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 
 import { jobs, type Job } from '@/content/work'
 import { observeReveal } from '@/lib/reveal'
+import { SiteNav } from '@/components/site-nav'
 import { startSmoothScroll } from '@/lib/smooth-scroll'
 
 const pad = (n: number) => String(n).padStart(2, '0')
@@ -66,17 +67,8 @@ export default function WorkPage() {
 
   return (
     <div ref={ref} className="min-h-svh bg-background">
-      <header className="flex items-baseline justify-between px-6 py-5 md:px-14 md:py-7">
-        <a href="../" className="font-display text-xl font-semibold tracking-[-0.03em] md:text-2xl">
-          kepler designs
-        </a>
-        <a href="../" className="group text-sm text-muted-foreground transition-colors hover:text-foreground md:text-base">
-          <span aria-hidden="true" className="mr-1.5 inline-block transition-transform duration-300 group-hover:-translate-x-0.5">
-            ←
-          </span>
-          Home
-        </a>
-      </header>
+      <SiteNav page="work" />
+      <div id="top" className="h-20 md:h-24" aria-hidden="true" />
 
       <main className="px-6 pt-10 pb-20 md:px-14 md:pt-16 md:pb-28">
         <h1
