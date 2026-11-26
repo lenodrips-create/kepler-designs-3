@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import { createWordSpread } from '@/lib/word-spread'
 
 const paragraphs = [
-  'kepler designs is a small studio that designs websites and web apps, and then builds them too. One team takes the work from the first sketch to the live site, so what you approve is what ships.',
+  'kepler designs is a small web design studio in Greencastle, PA that designs websites and web apps, and then builds them too. One team takes the work from the first sketch to the live site, so what you approve is what ships.',
   'We work with founders, small companies and teams who have outgrown their template. Some need a single page that says clearly what they do. Others need a whole product, designed screen by screen and engineered to hold up.',
   'Everything is made for the people who will use it: quick on a slow connection, readable on a small screen, usable with a keyboard. The process stays plain too, with a fixed price agreed before we start and one point of contact the whole way through.',
 ]

@@ -51,10 +51,11 @@ export function Hero() {
         <p className="mb-1 pl-[0.2em] font-display text-xl font-medium tracking-[-0.01em] text-white [text-shadow:0_1px_16px_rgb(0_0_0/0.4)] md:mb-2 md:text-3xl">
           Greencastle, PA
         </p>
+        {/* the page's main heading: the wordmark, read as what and where */}
+        <h1 className="sr-only">kepler designs: web design in Greencastle, PA</h1>
         <svg
           ref={svgRef}
-          role="img"
-          aria-label={WORD}
+          aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMax meet"
           className="block h-auto w-full overflow-visible opacity-0 transition-opacity duration-900 ease-[cubic-bezier(.45,0,.55,1)] data-[ready=true]:opacity-100"
