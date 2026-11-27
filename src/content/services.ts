@@ -81,6 +81,6 @@ export const packages: Package[] = [
 
 export const terms: { title: string; detail: string }[] = [
   { title: 'Fixed quotes', detail: 'You get a fixed price after a free 30-minute call. It only changes if the scope does.' },
-  { title: 'Simple payment', detail: 'Half to start, half at launch. Larger projects are split into milestones.' },
+  { title: 'Pay at the end', detail: 'Nothing up front. You pay once the work is finished and you’re happy with it.' },
   { title: 'Yours to keep', detail: 'Prices are in US dollars, before tax. You own everything we make for you.' },
 ]

@@ -13,7 +13,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How do payments work?',
-    a: 'Half to start and half at launch. Larger projects are split into milestones, so you pay as each stage is finished. Prices are in US dollars, before tax.',
+    a: 'You pay at the end. There’s nothing to pay up front: once the work is finished and you’re happy with it, you pay the agreed price. Domain and hosting is billed monthly. Prices are in US dollars, before tax.',
   },
   {
     q: 'Will the price change once we’ve started?',
