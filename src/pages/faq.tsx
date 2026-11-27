@@ -17,7 +17,7 @@ export default function FaqPage() {
 
   return (
     <div ref={ref} className="min-h-svh bg-background">
-      <SiteNav page="other" />
+      <SiteNav page="faq" />
       <ContactButton />
       <div id="top" className="h-20 md:h-24" aria-hidden="true" />
 

@@ -9,7 +9,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How long does it take to build a website?',
-    a: 'A landing page usually takes 2–3 weeks, a website 5–8 weeks and a web app 8–14 weeks. The biggest factor is how quickly we get your content, like text, photos and logos, so having those ready speeds things up.',
+    a: 'Up to two weeks, and about one week for most services. A landing page is usually done in about a week, and larger websites and web apps take up to two. The biggest factor is how quickly we get your content, like text, photos and logos, so having those ready speeds things up.',
   },
   {
     q: 'How do payments work?',

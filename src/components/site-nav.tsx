@@ -1,4 +1,4 @@
-import { Briefcase, Clapperboard, Home, Layers, Tag } from 'lucide-react'
+import { Briefcase, CircleHelp, Clapperboard, Home, Layers, Tag } from 'lucide-react'
 
 import logo from '@/assets/logo.svg'
 import { MenuBar, type MenuItem } from '@/components/ui/glow-menu'
@@ -40,9 +40,16 @@ const items: MenuItem[] = [
     gradient: 'radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(147,51,234,0.06) 50%, rgba(126,34,206,0) 100%)',
     iconColor: 'group-hover:text-purple-500',
   },
+  {
+    icon: <CircleHelp className="h-5 w-5" />,
+    label: 'FAQ',
+    href: 'faq/',
+    gradient: 'radial-gradient(circle, rgba(20,184,166,0.15) 0%, rgba(13,148,136,0.06) 50%, rgba(15,118,110,0) 100%)',
+    iconColor: 'group-hover:text-teal-500',
+  },
 ]
 
-export type NavPage = 'home' | 'services' | 'work' | 'clients' | 'practice' | 'other'
+export type NavPage = 'home' | 'services' | 'work' | 'clients' | 'practice' | 'faq' | 'other'
 
 /* Turn a link written for the home page into the right one for `page`.
    On the page it points to, it becomes an in-page jump. */
