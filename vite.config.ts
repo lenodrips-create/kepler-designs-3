@@ -10,19 +10,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   // Pages: home, /services/, /work/, /clients/, /faq/, /privacy/ and /terms/
   build: {
-    // One stylesheet for every page, at a fixed name.
-    cssCodeSplit: false,
     rollupOptions: {
-      // Fixed file names instead of content hashes. GitHub Pages only lets
-      // browsers keep files for ~10 minutes, so hashes buy nothing, and with
-      // them a page saved before an update asks for files the update deleted
-      // (unstyled or blank page). With fixed names it always finds them.
-      output: {
-        entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].js',
-        assetFileNames: (info) =>
-          info.names?.some((n) => n.endsWith('.css')) ? 'assets/site.css' : 'assets/[name][extname]',
-      },
       input: {
         main: path.resolve(import.meta.dirname, 'index.html'),
         services: path.resolve(import.meta.dirname, 'services/index.html'),
