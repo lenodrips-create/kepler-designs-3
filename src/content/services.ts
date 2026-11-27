@@ -29,7 +29,7 @@ export const packages: Package[] = [
     includes: [
       'Design and build of a single responsive page',
       'Copy structure and visual direction',
-      'Content you can edit without code',
+      'Free changes, any time: just call',
       'Performance and accessibility pass',
       'Analytics, domain and launch',
     ],
@@ -42,10 +42,9 @@ export const packages: Package[] = [
     includes: [
       'Up to 8 page templates',
       'A small design system: type, colour, components',
-      'Headless CMS your team can edit',
+      'Free changes, any time: just call',
       'Motion and interaction design',
       'SEO foundations and redirects',
-      '30 days of fixes after launch',
     ],
   },
   {
@@ -60,6 +59,7 @@ export const packages: Package[] = [
       'Component library with documentation',
       'API integration, tests and CI',
       'Handover to your engineers',
+      'Free changes, any time: just call',
     ],
   },
   {
@@ -74,7 +74,7 @@ export const packages: Package[] = [
       'HTTPS security certificate',
       'DNS and email forwarding setup',
       'Uptime monitoring and backups',
-      'Small updates and fixes each month',
+      'Free changes, any time: just call',
     ],
   },
 ]

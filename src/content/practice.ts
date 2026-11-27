@@ -14,6 +14,6 @@ export const engineering: Capability[] = [
   { title: 'Front-end development', detail: 'React and TypeScript, typed from the API response to the button label.' },
   { title: 'Performance', detail: 'Budgets for page weight and Core Web Vitals, checked on every pull request.' },
   { title: 'Accessibility', detail: 'WCAG 2.2 AA as the floor: keyboard, screen readers, contrast, reduced motion.' },
-  { title: 'Content and CMS', detail: 'Headless setups your team can edit on a Friday afternoon without calling us.' },
+  { title: 'Changes on call', detail: 'Need something updated? Call and we change it for free, so your site never goes stale.' },
   { title: 'Delivery', detail: 'Preview links for every change, CI, analytics and error tracking from day one.' },
 ]

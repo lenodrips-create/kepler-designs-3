@@ -26,7 +26,7 @@ export const brands: Brand[] = [
     story: [
       'Forgiven came to us with a name and a message, but no real home online. People were finding them through word of mouth and social posts, then landing on pages that didn’t say clearly who they were or what they stood for. The goal was a presence that felt as considered as the message itself.',
       'We started with the mark. The cross is built from clean, angled strokes with a deliberate break through the middle, simple enough to read at the size of a phone icon and strong enough to hold a whole page. From there we chose a type and colour system that stays quiet, so the words do the work.',
-      'Then we designed and built the website around it: a clear story up front, simple paths to learn more or get in touch, and pages that load quickly on any phone. Everything is set up so the Forgiven team can update their own content without calling us, and the site is ready to grow as they do.',
+      'Then we designed and built the website around it: a clear story up front, simple paths to learn more or get in touch, and pages that load quickly on any phone. Whenever the Forgiven team needs something changed, they call and we update it, so the site is ready to grow as they do.',
     ],
   },
   {

@@ -24,12 +24,12 @@ export const faqs: Faq[] = [
     a: 'Yes. You own everything we make for you: the design, the code, the content and the domain name. If you ever want to move to another host or designer, you can take it all with you.',
   },
   {
-    q: 'Can I update the website myself?',
-    a: 'Yes. Websites come with an easy editor for your text, photos and pages, so you can make everyday changes without touching code and without calling us. We’ll show you how it works before launch.',
+    q: 'How do I make changes to my website?',
+    a: 'Just call us at 717 494 3284 and tell us what you want changed. New text, photos, prices, hours or a whole new section, we’ll change anything for free. No editor to learn and no logins to remember.',
   },
   {
     q: 'What does domain and hosting include?',
-    a: 'For $100 a month we register and renew your domain, host your site on fast, reliable servers, keep its HTTPS security certificate active, set up your DNS and email forwarding, monitor it and keep backups, and make small updates and fixes each month.',
+    a: 'For $100 a month we register and renew your domain, host your site on fast, reliable servers, keep its HTTPS security certificate active, set up your DNS and email forwarding, and monitor it and keep backups.',
   },
   {
     q: 'I already have a domain name. Can I keep it?',
@@ -57,7 +57,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'What happens after my website launches?',
-    a: 'Websites include 30 days of fixes after launch. After that, our domain and hosting service covers monitoring, backups and small monthly updates, or you can come to us any time for bigger changes.',
+    a: 'We stay with you. Whenever you need something changed, just call and we’ll change it for free. If you also choose our domain and hosting, we keep your site online, secure and backed up for you every month.',
   },
   {
     q: 'How do I get started?',
