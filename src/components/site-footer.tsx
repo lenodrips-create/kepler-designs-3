@@ -24,6 +24,7 @@ const columns = [
       ['How it works', 'services/#terms-title'],
       ['About', '#about'],
       ['Clients', 'clients/'],
+      ['FAQ', 'faq/'],
     ],
   },
   {
