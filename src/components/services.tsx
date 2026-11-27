@@ -46,18 +46,18 @@ export function Services({ asPage = false }: { asPage?: boolean }) {
           <h2 id="packages-title" data-reveal className="font-display text-3xl font-semibold tracking-[-0.03em] md:text-5xl">
             Packages
           </h2>
-          <div className="mt-8 grid border-t border-foreground/20 md:mt-10 md:grid-cols-3">
+          <div className="mt-8 grid border-t border-foreground/20 md:mt-10 md:grid-cols-2 xl:grid-cols-4">
             {packages.map((p, i) => (
               <article
                 key={p.name}
                 data-reveal
                 style={stagger(i)}
-                className="flex flex-col border-b border-foreground/10 py-8 md:border-r md:border-b-0 md:px-8 md:py-10 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
+                className="flex flex-col border-b border-foreground/10 py-8 md:py-10 md:odd:border-r md:odd:pr-8 md:even:pl-8 xl:border-b-0 xl:border-r xl:px-8 xl:first:pl-0 xl:last:border-r-0 xl:last:pr-0"
               >
                 <h3 className="font-display text-2xl font-semibold tracking-[-0.02em] md:text-3xl">{p.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">{p.summary}</p>
                 <p className="mt-8">
-                  <Price amount={p.from} from large />
+                  <Price amount={p.from} from={!p.per} per={p.per} large />
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">{p.timeline}</p>
                 <ul className="mt-8 space-y-2.5 border-t border-foreground/10 pt-6 text-sm leading-relaxed md:text-[0.95rem]">

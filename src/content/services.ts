@@ -13,6 +13,8 @@ export const CONTACT_PHONE_HREF = 'tel:+17174943284'
 export type Package = {
   name: string
   from: number
+  /** Set for a recurring price, e.g. 'month'. Shown as "$100 / month". */
+  per?: string
   timeline: string
   summary: string
   includes: string[]
@@ -58,6 +60,21 @@ export const packages: Package[] = [
       'Component library with documentation',
       'API integration, tests and CI',
       'Handover to your engineers',
+    ],
+  },
+  {
+    name: 'Domain and hosting',
+    from: 100,
+    per: 'month',
+    timeline: 'Monthly, cancel anytime',
+    summary: 'Your web address and a fast, secure home for your site, looked after for you.',
+    includes: [
+      'Domain name registration and renewal',
+      'Fast, reliable hosting',
+      'HTTPS security certificate',
+      'DNS and email forwarding setup',
+      'Uptime monitoring and backups',
+      'Small updates and fixes each month',
     ],
   },
 ]

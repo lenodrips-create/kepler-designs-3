@@ -11,6 +11,7 @@ const columns = [
       ['Landing pages', 'services/#packages-title'],
       ['Websites', 'services/#packages-title'],
       ['Web apps', 'services/#packages-title'],
+      ['Domain and hosting', 'services/#packages-title'],
       ['Tech support', 'work/'],
     ],
   },
