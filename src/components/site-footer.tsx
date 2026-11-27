@@ -19,7 +19,6 @@ const columns = [
     title: 'Studio',
     links: [
       ['Recent work', 'work/'],
-      ['Practice', 'practice/'],
       ['Pricing', 'services/#packages-title'],
       ['How it works', 'services/#terms-title'],
       ['About', '#about'],

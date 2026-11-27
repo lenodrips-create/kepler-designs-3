@@ -1,4 +1,4 @@
-import { Briefcase, CircleHelp, Clapperboard, Home, Layers, Tag } from 'lucide-react'
+import { Briefcase, CircleHelp, Clapperboard, Home, Tag } from 'lucide-react'
 
 import logo from '@/assets/logo.svg'
 import { MenuBar, type MenuItem } from '@/components/ui/glow-menu'
@@ -11,13 +11,6 @@ const items: MenuItem[] = [
     href: '#top',
     gradient: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)',
     iconColor: 'group-hover:text-blue-500',
-  },
-  {
-    icon: <Layers className="h-5 w-5" />,
-    label: 'Practice',
-    href: 'practice/',
-    gradient: 'radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)',
-    iconColor: 'group-hover:text-orange-500',
   },
   {
     icon: <Tag className="h-5 w-5" />,
@@ -49,7 +42,7 @@ const items: MenuItem[] = [
   },
 ]
 
-export type NavPage = 'home' | 'services' | 'work' | 'clients' | 'practice' | 'faq' | 'other'
+export type NavPage = 'home' | 'services' | 'work' | 'clients' | 'faq' | 'other'
 
 /* Turn a link written for the home page into the right one for `page`.
    On the page it points to, it becomes an in-page jump. */
@@ -57,7 +50,7 @@ function resolve(href: string, page: NavPage): string {
   if (page === 'home') return href
   if (href === '#top') return '../'
   if (href.startsWith('#')) return '../' + href // e.g. ../#clients
-  const [path, hash] = href.split('#') // e.g. services/ , practice
+  const [path, hash] = href.split('#') // e.g. services/ , packages-title
   if (path === `${page}/`) return hash ? `#${hash}` : '#top'
   return '../' + href
 }
